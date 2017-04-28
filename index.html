@@ -100,28 +100,17 @@
 <section id="この発表の概要" class="slide level1">
 <h1>この発表の概要</h1>
 <ul>
-<li>Pandocでドキュメントを変換しよう
+<li>Pandocの概要</li>
+<li>Pandocをインストールする</li>
+<li>Pandocでドキュメントを変換する
 <ul>
-<li>Markdown→LibreOffice Writer</li>
-<li>LibreOffice Writer→Markdown</li>
+<li>LibreOffice Writer文書を中心に</li>
 </ul></li>
+<li>「書式の自由」について</li>
 </ul>
 </section>
-<section id="markdownって何" class="slide level1">
-<h1>Markdownって何？</h1>
-<ul>
-<li>このスライド自体が、実はMarkdownで書かれています</li>
-<li>元々は<a href="http://daringfireball.net/">John Gruberが作ったオリジナルの処理系</a> でHTMLに変換するための略記法だった</li>
-<li>そのうちGitHubやPHPなどで記法が拡張された
-<ul>
-<li>MultiMarkdownやPandocの登場をきっかけに、目的も「論文」「プレゼンテーション」「電子書籍」など用途が広がった</li>
-<li>数々の「方言」がある状態</li>
-</ul></li>
-<li>基本のMarkdownだけを覚えれば、大抵は書けます
-<ul>
-<li>プレビューを行うのが鉄則</li>
-</ul></li>
-</ul>
+<section id="pandocの概要" class="slide level1">
+<h1>Pandocの概要</h1>
 </section>
 <section id="こんなことに困っていませんか" class="slide level1">
 <h1>こんなことに困っていませんか？</h1>
@@ -167,6 +156,22 @@
 <li>manページ, AsciiDoc, InDesign ICML</li>
 <li><strong>プレゼンテーション</strong>: LaTeX Beamer, HTML5(reveal.jsなど)</li>
 <li>PDF (wkhtmltopdfまたはLaTeXエンジンが必要)</li>
+</ul></li>
+</ul>
+</section>
+<section id="そもそもmarkdownって何" class="slide level1">
+<h1>そもそもMarkdownって何？</h1>
+<ul>
+<li>このスライド自体が、実はMarkdownで書かれています</li>
+<li>元々は<a href="http://daringfireball.net/">John Gruberが作ったオリジナルの処理系</a> でHTMLに変換するための略記法だった</li>
+<li>そのうちGitHubやPHPなどで記法が拡張された
+<ul>
+<li>MultiMarkdownやPandocの登場をきっかけに、目的も「論文」「プレゼンテーション」「電子書籍」など用途が広がった</li>
+<li>数々の「方言」がある状態</li>
+</ul></li>
+<li>基本のMarkdownだけを覚えれば、大抵は書けます
+<ul>
+<li>プレビューを行うのが鉄則</li>
 </ul></li>
 </ul>
 </section>
@@ -261,8 +266,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="準備-pandocをインストールする" class="slide level1">
-<h1>準備: Pandocをインストールする</h1>
+<section id="pandocをインストールする" class="slide level1">
+<h1>Pandocをインストールする</h1>
 </section>
 <section id="ターミナルを開く" class="slide level1">
 <h1>ターミナルを開く</h1>
@@ -383,13 +388,18 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 </ul></li>
 </ul>
 </section>
-<section id="pandocチュートリアル-libreoffice-writer文書を中心に" class="slide level1">
-<h1>Pandocチュートリアル: LibreOffice Writer文書を中心に</h1>
+<section id="pandocでドキュメントを変換する" class="slide level1">
+<h1>Pandocでドキュメントを変換する</h1>
+<h2 id="libreoffice-writer文書を中心に">LibreOffice Writer文書を中心に</h2>
 </section>
 <section id="これからやること" class="slide level1">
 <h1>これからやること</h1>
 <ul>
-<li>Markdown文書からWriter文書に変換する</li>
+<li>Markdown文書からWriter文書に変換する
+<ul>
+<li>とりあえず変換してみる</li>
+<li>綺麗なWriter文書を生成する: テンプレート機能</li>
+</ul></li>
 <li>Writer文書をMarkdownに変換する</li>
 <li>以下の作業では、<a href="https://github.com/sky-y/libreoffice-kansai-14-pandoc">GitHubリポジトリ</a>のsampleディレクトリにあるファイルを使います
 <ul>
@@ -397,8 +407,8 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 </ul></li>
 </ul>
 </section>
-<section id="pandocコマンド" class="slide level1">
-<h1>pandocコマンド</h1>
+<section id="とりあえず変換してみる-pandocコマンド" class="slide level1">
+<h1>とりあえず変換してみる: pandocコマンド</h1>
 <pre><code>$ pandoc connpass.md -o connpass.odt</code></pre>
 <ul>
 <li><code>-o</code>: 出力ファイル名
@@ -504,7 +514,7 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <ul>
 <li><code>$ pandoc pandoc-writer.odt -o pandoc-writer.md</code></li>
 </ul></li>
-<li>reStructuredText (for Sphinx)
+<li>reStructuredText (Sphinxなどで使用)
 <ul>
 <li><code>$ pandoc pandoc-writer.odt -o pandoc-writer.rst</code></li>
 </ul></li>
@@ -535,6 +545,9 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <blockquote>
 <p>LibreOffice は、ちょうどあなたのように、フリーソフトウェアの原理を信じ、そしてその成果を制限のない形で世界中で共有することを信じるユーザーによって開発されています。</p>
 </blockquote>
+<ul>
+<li>PandocのソースコードはGPL</li>
+</ul>
 </section>
 <section id="pandocの思想的インパクト書式の自由" class="slide level1">
 <h1>Pandocの思想的インパクト＝「書式の自由」</h1>

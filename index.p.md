@@ -61,22 +61,15 @@ margin: 0
 
 # この発表の概要
 
-
-- Pandocでドキュメントを変換しよう
-    - Markdown→LibreOffice Writer
-    - LibreOffice Writer→Markdown
+- Pandocの概要
+- Pandocをインストールする
+- Pandocでドキュメントを変換する
+    - LibreOffice Writer文書を中心に
+- 「書式の自由」について
 
 ----
 
-# Markdownって何？
-
-- このスライド自体が、実はMarkdownで書かれています
-- 元々は[John Gruberが作ったオリジナルの処理系](http://daringfireball.net/) でHTMLに変換するための略記法だった
-- そのうちGitHubやPHPなどで記法が拡張された
-    - MultiMarkdownやPandocの登場をきっかけに、目的も「論文」「プレゼンテーション」「電子書籍」など用途が広がった
-    - 数々の「方言」がある状態
-- 基本のMarkdownだけを覚えれば、大抵は書けます
-    - プレビューを行うのが鉄則
+# Pandocの概要
 
 ----
 
@@ -119,6 +112,18 @@ margin: 0
     - manページ,  AsciiDoc, InDesign ICML
     - **プレゼンテーション**: LaTeX Beamer, HTML5(reveal.jsなど)
     - PDF (wkhtmltopdfまたはLaTeXエンジンが必要)
+
+----
+
+# そもそもMarkdownって何？
+
+- このスライド自体が、実はMarkdownで書かれています
+- 元々は[John Gruberが作ったオリジナルの処理系](http://daringfireball.net/) でHTMLに変換するための略記法だった
+- そのうちGitHubやPHPなどで記法が拡張された
+    - MultiMarkdownやPandocの登場をきっかけに、目的も「論文」「プレゼンテーション」「電子書籍」など用途が広がった
+    - 数々の「方言」がある状態
+- 基本のMarkdownだけを覚えれば、大抵は書けます
+    - プレビューを行うのが鉄則
 
 ----
 
@@ -185,7 +190,7 @@ margin: 0
 
 ----
 
-# 準備: Pandocをインストールする
+# Pandocをインストールする
 
 ----
 
@@ -289,20 +294,23 @@ $ echo "**Hello**" | pandoc -f markdown -t html5 -o hello.pdf
 
 ----
 
-# Pandocチュートリアル: LibreOffice Writer文書を中心に
+# Pandocでドキュメントを変換する
+## LibreOffice Writer文書を中心に
 
 ----
 
 # これからやること
 
 - Markdown文書からWriter文書に変換する
+    - とりあえず変換してみる
+    - 綺麗なWriter文書を生成する: テンプレート機能
 - Writer文書をMarkdownに変換する
 - 以下の作業では、[GitHubリポジトリ](https://github.com/sky-y/libreoffice-kansai-14-pandoc)のsampleディレクトリにあるファイルを使います
     - 興味のある人はgit cloneして試してみてください
 
 ----
 
-# pandocコマンド
+# とりあえず変換してみる: pandocコマンド
 
 ```
 $ pandoc connpass.md -o connpass.odt
@@ -399,7 +407,7 @@ $ pandoc connpass.md --reference-doc=pandoc-writer.odt -o connpass-pandoc-writer
 - nogajunさんの`pandoc-writer.odt`を変換してみる
 - Markdown (Pandoc's)
     - `$ pandoc pandoc-writer.odt -o pandoc-writer.md`
-- reStructuredText (for Sphinx)
+- reStructuredText (Sphinxなどで使用)
     - `$ pandoc pandoc-writer.odt -o pandoc-writer.rst`
 - LaTeX
     - デフォルトはLuaLaTeX/XeLaTeXが必要なので注意
@@ -425,6 +433,8 @@ $ pandoc connpass.md --reference-doc=pandoc-writer.odt -o connpass-pandoc-writer
     - [私たちは誰? | LibreOffice](https://ja.libreoffice.org/about-us/who-are-we/)
 
 > LibreOffice は、ちょうどあなたのように、フリーソフトウェアの原理を信じ、そしてその成果を制限のない形で世界中で共有することを信じるユーザーによって開発されています。
+
+- PandocのソースコードはGPL
 
 ----
 
