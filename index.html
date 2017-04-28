@@ -418,7 +418,7 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <li>Pandocのテンプレート機能を使う
 <ul>
 <li><ol type="1">
-<li>Pandocコマンドからテンプレート(reference.odt)を生成</li>
+<li>Pandocコマンドからテンプレートを生成</li>
 </ol></li>
 <li><ol start="2" type="1">
 <li>テンプレートをWriterで編集する</li>
@@ -435,6 +435,10 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <section id="pandocコマンドからテンプレートを生成" class="slide level1">
 <h1>(1) Pandocコマンドからテンプレートを生成</h1>
 <pre><code>$ pandoc --print-default-data-file reference.odt &gt; reference.odt</code></pre>
+<ul>
+<li>コマンドオプションで指定する場合は「reference.odt」という名前でなくてよい</li>
+<li>ユーザデータディレクトリ(後述)に入れる場合は必ず「reference.odt」という名前にする</li>
+</ul>
 </section>
 <section id="テンプレートをwriterで編集する" class="slide level1">
 <h1>(2) テンプレートをWriterで編集する</h1>
@@ -461,6 +465,17 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 </ul></li>
 </ul>
 </section>
+<section id="補足テンプレートをユーザデータディレクトリに入れる" class="slide level1">
+<h1>補足：テンプレートをユーザデータディレクトリに入れる</h1>
+<ul>
+<li>ユーザデータディレクトリの場所: <code>pandoc -v</code> で出る
+<ul>
+<li>Windows: <code>C:\Users\ユーザ名\AppData\Roaming\pandoc</code></li>
+<li>Mac: <code>$HOME/.pandoc</code></li>
+</ul></li>
+<li>このディレクトリに「reference.odt」という名前でテンプレートを入れると、次回からデフォルトで使ってくれる</li>
+</ul>
+</section>
 <section id="pandocとwriterの具体的なノウハウ-nogajunさん" class="slide level1">
 <h1>PandocとWriterの具体的なノウハウ (nogajunさん)</h1>
 <ul>
@@ -469,6 +484,7 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <li><a href="https://github.com/nogajun/pandoc-writer">nogajun/pandoc-writer</a>の<code>pandoc-writer.odt</code>がテンプレートとして使える</li>
 </ul></li>
 </ul>
+<pre><code>$ pandoc connpass.md --reference-doc=pandoc-writer.odt -o connpass-pandoc-writer.odt</code></pre>
 </section>
 <section id="画像に関するノウハウ-いくやさん" class="slide level1">
 <h1>画像に関するノウハウ (いくやさん)</h1>
@@ -482,6 +498,28 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 </section>
 <section id="writer文書からmarkdownrestlatex文書に変換してみる" class="slide level1">
 <h1>Writer文書からMarkdown/reST/LaTeX文書に変換してみる</h1>
+<ul>
+<li>nogajunさんの<code>pandoc-writer.odt</code>を変換してみる</li>
+<li>Markdown (Pandoc’s)
+<ul>
+<li><code>$ pandoc pandoc-writer.odt -o pandoc-writer.md</code></li>
+</ul></li>
+<li>reStructuredText (for Sphinx)
+<ul>
+<li><code>$ pandoc pandoc-writer.odt -o pandoc-writer.rst</code></li>
+</ul></li>
+<li>LaTeX
+<ul>
+<li>デフォルトはLuaLaTeX/XeLaTeXが必要なので注意</li>
+<li>詳細: <a href="http://d.hatena.ne.jp/zrbabbler/20160228/1456622107">BXjscls がまた新しくなった（v1.1a） - マクロツイーター</a></li>
+<li><code>$ pandoc -s pandoc-writer.odt -o pandoc-writer.tex</code></li>
+<li><code>-s</code>: 文書として完全になるようにヘッダ・フッタを付ける (standaloneモード)</li>
+</ul></li>
+</ul>
+</section>
+<section id="qa" class="slide level1">
+<h1>Q&amp;A</h1>
+<h2 id="特にpandocコマンドについて">(特にPandocコマンドについて)</h2>
 </section>
 <section id="書式の自由について" class="slide level1">
 <h1>「書式の自由」について</h1>
@@ -586,7 +624,15 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 </ul></li>
 </ul>
 </section>
-<section id="qa" class="slide level1">
+<section id="ドキュメンテーションwiki" class="slide level1">
+<h1>ドキュメンテーションWiki</h1>
+<ul>
+<li><a href="https://github.com/doc-wiki-jp/wiki/wiki">ドキュメンテーションWiki (GitHub)</a></li>
+<li>誰でも編集歓迎します（要GitHubアカウント）</li>
+<li>特にLibreOffice関連の記事が不足しています</li>
+</ul>
+</section>
+<section id="qa-1" class="slide level1">
 <h1>Q&amp;A</h1>
 <ul>
 <li>連絡先

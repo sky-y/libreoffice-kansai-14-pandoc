@@ -331,7 +331,7 @@ pandocコマンド
 ==========================
 
 -   Pandocのテンプレート機能を使う
-    -   1.  Pandocコマンドからテンプレート(reference.odt)を生成
+    -   1.  Pandocコマンドからテンプレートを生成
 
     -   1.  テンプレートをWriterで編集する
 
@@ -345,6 +345,9 @@ pandocコマンド
 ========================================
 
     $ pandoc --print-default-data-file reference.odt > reference.odt
+
+-   コマンドオプションで指定する場合は「reference.odt」という名前でなくてよい
+-   ユーザデータディレクトリ(後述)に入れる場合は必ず「reference.odt」という名前にする
 
 ------------------------------------------------------------------------
 
@@ -371,11 +374,25 @@ pandocコマンド
 
 ------------------------------------------------------------------------
 
+補足：テンプレートをユーザデータディレクトリに入れる
+====================================================
+
+-   ユーザデータディレクトリの場所: `pandoc -v` で出る
+    -   Windows: `C:\Users\ユーザ名\AppData\Roaming\pandoc`
+    -   Mac: `$HOME/.pandoc`
+-   このディレクトリに「reference.odt」という名前でテンプレートを入れると、次回からデフォルトで使ってくれる
+
+------------------------------------------------------------------------
+
 PandocとWriterの具体的なノウハウ (nogajunさん)
 ==============================================
 
 -   [PandocとLibreOffice WriterでiDエディタのマニュアルを製本する, どうしてこうなった - Days of Speed(2014-12-06)](http://www.nofuture.tv/diary/20141206.html)
     -   [nogajun/pandoc-writer](https://github.com/nogajun/pandoc-writer)の`pandoc-writer.odt`がテンプレートとして使える
+
+<!-- -->
+
+    $ pandoc connpass.md --reference-doc=pandoc-writer.odt -o connpass-pandoc-writer.odt
 
 ------------------------------------------------------------------------
 
@@ -390,6 +407,25 @@ PandocとWriterの具体的なノウハウ (nogajunさん)
 
 Writer文書からMarkdown/reST/LaTeX文書に変換してみる
 ===================================================
+
+-   nogajunさんの`pandoc-writer.odt`を変換してみる
+-   Markdown (Pandoc’s)
+    -   `$ pandoc pandoc-writer.odt -o pandoc-writer.md`
+-   reStructuredText (for Sphinx)
+    -   `$ pandoc pandoc-writer.odt -o pandoc-writer.rst`
+-   LaTeX
+    -   デフォルトはLuaLaTeX/XeLaTeXが必要なので注意
+    -   詳細: [BXjscls がまた新しくなった（v1.1a） - マクロツイーター](http://d.hatena.ne.jp/zrbabbler/20160228/1456622107)
+    -   `$ pandoc -s pandoc-writer.odt -o pandoc-writer.tex`
+    -   `-s`: 文書として完全になるようにヘッダ・フッタを付ける (standaloneモード)
+
+------------------------------------------------------------------------
+
+Q&A
+===
+
+(特にPandocコマンドについて)
+----------------------------
 
 ------------------------------------------------------------------------
 
@@ -479,6 +515,15 @@ Pandocの今後の課題
 -   Webサイトはリニューアル予定
 -   Slackを始めました
     -   [Slack登録フォーム](https://docs.google.com/forms/d/e/1FAIpQLScdXINuMSFlKFk9YClkDUtvZNaYFWVSiJyleYjtMVbIHqwJhA/viewform)
+
+------------------------------------------------------------------------
+
+ドキュメンテーションWiki
+========================
+
+-   [ドキュメンテーションWiki (GitHub)](https://github.com/doc-wiki-jp/wiki/wiki)
+-   誰でも編集歓迎します（要GitHubアカウント）
+-   特にLibreOffice関連の記事が不足しています
 
 ------------------------------------------------------------------------
 
