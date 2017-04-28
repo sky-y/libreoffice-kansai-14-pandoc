@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="藤原 惟 / すかいゆき (@sky_y)">
+  <title>Pandocチュートリアル 第1回 Pandocでドキュメントを変換しよう</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js-3.4.0/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js-3.4.0/css/theme/sky-sky-y.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js-3.4.0/css/print/pdf.css' : 'reveal.js-3.4.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js-3.4.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Pandocチュートリアル 第1回 Pandocでドキュメントを変換しよう</h1>
+  <p class="author">藤原 惟 / すかいゆき (<span class="citation" data-cites="sky">@sky</span>_y)</p>
+  <p class="date">2017年1月20日</p>
+</section>
+
+<section id="自己紹介" class="slide level1">
+<h1>自己紹介</h1>
+<ul>
+<li>名前
+<ul>
+<li>藤原 惟</li>
+<li>すかいゆき</li>
+<li>Yuki Fujiwara （本名）</li>
+</ul></li>
+<li>職業
+<ul>
+<li>フリープログラマ</li>
+<li>専門学校 非常勤講師</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocに関する活動" class="slide level1">
+<h1>Pandocに関する活動</h1>
+<ul>
+<li>Qiitaを中心に記事執筆
+<ul>
+<li><a href="http://qiita.com/sky_y/items/80bcd0f353ef5b8980ee">多様なフォーマットに対応！ドキュメント変換ツールPandocを知ろう - Qiita</a></li>
+</ul></li>
+<li>Pandocユーザーズガイドを和訳
+<ul>
+<li><a href="http://sky-y.github.io/site-pandoc-jp/users-guide/">Pandoc ユーザーズガイド 日本語版</a></li>
+<li>バージョンが古くなったので、改訂を予定</li>
+</ul></li>
+</ul>
+</section>
+<section id="発表を始めます" class="slide level1">
+<h1>発表を始めます</h1>
+</section>
+<section id="pandoc公式サイト" class="slide level1">
+<h1>Pandoc公式サイト</h1>
+<ul>
+<li><a href="http://pandoc.org/index.html">Pandoc - About pandoc</a></li>
+<li>ユーザーズガイド
+<ul>
+<li><a href="http://pandoc.org/MANUAL.html">Pandoc - Pandoc User’s Guide</a></li>
+<li><a href="http://sky-y.github.io/site-pandoc-jp/users-guide/">Pandoc ユーザーズガイド 日本語版</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocと私" class="slide level1">
+<h1>Pandocと私</h1>
+<ul>
+<li>院生時代の依頼
+<ul>
+<li>従来よりLaTeXで書かれた「教育用システムの利用手引」を、EPUBにできるかどうか検証してくれないか？</li>
+<li>このとき調べ回って、「Pandocというものがあるらしい」と気づいた</li>
+</ul></li>
+<li>「LaTeXからEPUBに変換する」タスクが想像以上にあっさり実現
+<ul>
+<li>多少は難はあったが（input命令に当時は対応してない（今は対応）とか、組版がいけてないとか）</li>
+<li>この感動が、今の活動の原点</li>
+</ul></li>
+<li>なんでこんなにすごいソフトウェアが、日本では知られていなかったんだろう？
+<ul>
+<li>「Pandocを広めよう」と決意した瞬間</li>
+</ul></li>
+</ul>
+</section>
+<section id="このチュートリアルでやること2回分の概要" class="slide level1">
+<h1>このチュートリアルでやること（2回分の概要）</h1>
+<ul>
+<li>第1回（今回） Pandocでドキュメントを変換しよう
+<ul>
+<li>Pandocをツールとして使う（入門編、第2回の基礎知識）</li>
+</ul></li>
+<li>第2回 HaskellでPandocを拡張してみよう
+<ul>
+<li>Haskellのやさしい入門（を目指します）</li>
+<li>「日常的な実用言語」としてのHaskellを体験してもらいたい</li>
+<li>Pandocのソースコードも少し読みます</li>
+</ul></li>
+</ul>
+</section>
+<section id="markdownって何" class="slide level1">
+<h1>Markdownって何？</h1>
+<ul>
+<li>このスライド自体が、実はMarkdownで書かれています</li>
+<li>元々は<a href="http://daringfireball.net/">John Gruberが作ったオリジナルの処理系</a> でHTMLに変換するための略記法だった</li>
+<li>そのうちGitHubやPHPなどで記法が拡張された
+<ul>
+<li>MultiMarkdownやPandocの登場をきっかけに、目的も「論文」「プレゼンテーション」「電子書籍」など用途が広がった</li>
+<li>数々の「方言」がある状態</li>
+</ul></li>
+<li>しかし、本当に基本のMarkdownだけを覚えれば、大抵は書けます
+<ul>
+<li>プレビューを行うのが鉄則</li>
+</ul></li>
+</ul>
+</section>
+<section id="こんなことに困っていませんか" class="slide level1">
+<h1>こんなことに困っていませんか？</h1>
+<ul>
+<li>書類をWord形式で提出しなければならないけど、Word重いし面倒</li>
+<li>バージョン管理をしたいけど、Word文書は<code>git diff</code>とか取りにくい</li>
+<li>Word文書をHTMLに変換せよとお達しがあった</li>
+<li>手元にLaTeXのソースがあって、それをEPUBにしてくれと言われた（実話）</li>
+<li>卒論のLaTeX辛いので、Markdownで書きたい</li>
+<li>Markdownでスライドショーを作りたい</li>
+</ul>
+</section>
+<section id="pandocの魅力" class="slide level1">
+<h1>Pandocの魅力</h1>
+</section>
+<section id="pandocとは" class="slide level1">
+<h1>Pandocとは</h1>
+<ul>
+<li><a href="http://pandoc.org/index.html">Pandoc - About pandoc</a></li>
+<li>文書変換ツール
+<ul>
+<li>あるフォーマットで書かれた文書を、別のフォーマットに変換するツール</li>
+</ul></li>
+<li>Pandocの特徴は、対応フォーマットが非常に多いこと</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p><a href="http://pandoc.org/diagram.jpg"><img src="figure/pandoc_diagram.jpg" style="width:15.0%" /></a></p>
+</section>
+<section id="対応フォーマット一部省略" class="slide level1">
+<h1>対応フォーマット（一部省略）</h1>
+<ul>
+<li>入力
+<ul>
+<li>Markdown (Pandoc, CommonMark, PHP Markdown Extra, GitHub-Flavored Markdown, MultiMarkdown)</li>
+<li>(subsets of) Textile, reStructuredText, HTML, LaTeX, MediaWiki markup, Emacs Org mode</li>
+<li>OPML, DocBook, EPUB, ODT and Word docx</li>
+</ul></li>
+<li>出力
+<ul>
+<li>Markdown (同上)</li>
+<li>manページ, AsciiDoc, InDesign ICML</li>
+<li>プレゼンテーション: LaTeX Beamer, HTML5(reveal.jsなど)</li>
+<li>PDF (wkhtmltopdfまたはLaTeXエンジンが必要)</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocを使う心得" class="slide level1">
+<h1>Pandocを使う心得</h1>
+<ul>
+<li>過剰な期待をし過ぎないこと
+<ul>
+<li>Pandocは万能でないし、文書仕様の全てを満たしているわけではない</li>
+</ul></li>
+<li>補助的に使うのがベスト
+<ul>
+<li>Pandocで、テキストと大まかな構造を抽出</li>
+<li>変換し切れなかった部分を、手作業や自作スクリプトで編集</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocの実装" class="slide level1">
+<h1>Pandocの実装</h1>
+<ul>
+<li>言語: Haskell
+<ul>
+<li>Pandoc的には、「厳密に型が定義されている」ことがありがたい</li>
+<li>Haskellは構文解析器(パーサ)を作るのにすごく適している (Parsecなど)</li>
+</ul></li>
+<li>モジュール構成
+<ul>
+<li>Reader: 入力文書を解析し、Haskell上の中間文書に変換する</li>
+<li>Writer: 中間文書を受け取り、出力フォーマットに変換する</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level1">
+
+<figure>
+<img src="figure/pandoc_block.jpg" alt="Pandocの処理フロー" /><figcaption>Pandocの処理フロー</figcaption>
+</figure>
+</section>
+<section id="pandocが扱えるmarkdown方言" class="slide level1">
+<h1>Pandocが扱えるMarkdown方言</h1>
+<ul>
+<li>Pandoc’s Markdown: <code>-f markdown</code>
+<ul>
+<li>Pandocにおける標準のMarkdown方言</li>
+<li>技術文書から論文・電子書籍まで幅広く対応</li>
+</ul></li>
+<li>GitHub Flavored Markdown (gfm): <code>-f markdown_github</code>
+<ul>
+<li>プログラマ・フレンドリーな方言</li>
+</ul></li>
+<li>PHP Markdown Extra: <code>-f markdown_phpextra</code>
+<ul>
+<li>最近はMarkdown Extraとも呼ばれる</li>
+</ul></li>
+<li>MultiMarkdown: <code>-f markdown_mmd</code>
+<ul>
+<li>HTMLだけでなくLaTeXなどの論文も意図した処理系</li>
+</ul></li>
+<li>CommonMark: <code>-f commonmark</code></li>
+</ul>
+</section>
+<section id="準備-pandocをインストールする" class="slide level1">
+<h1>準備: Pandocをインストールする</h1>
+</section>
+<section id="ターミナルを開く" class="slide level1">
+<h1>ターミナルを開く</h1>
+<ul>
+<li>Mac: ターミナル.app or iTerm2</li>
+<li>Windows: (今回は)コマンドプロンプト
+<ul>
+<li>(分かっている方は)お好きなターミナルでも結構です</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocのインストール" class="slide level1">
+<h1>Pandocのインストール</h1>
+<ul>
+<li>Haskell処理系は不要です</li>
+<li>パッケージを直接落としてインストール
+<ol type="1">
+<li><a href="https://github.com/jgm/pandoc/releases/latest">ここからパッケージをダウンロード</a>
+<ul>
+<li>Windows: <code>.msi</code>, Mac: <code>.pkg</code></li>
+</ul></li>
+<li>インストール</li>
+</ol></li>
+<li>パッケージマネージャでインストール
+<ul>
+<li>Mac(<a href="http://brew.sh/index_ja.html">Homebrew</a>): <code>$ brew install pandoc</code></li>
+<li>Windows(<a href="https://chocolatey.org/">Chocolatey</a>): <code>&gt; cinst pandoc</code>
+<ul>
+<li>Chocolateyのみ、PowerShell（管理者権限付き）がおすすめ</li>
+</ul></li>
+<li>Linux(Debian): <code>$ sudo apt-get install pandoc</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="wkhtmltopdfのインストール" class="slide level1">
+<h1>wkhtmltopdfのインストール</h1>
+<ul>
+<li>パッケージを直接落としてインストール
+<ol type="1">
+<li><a href="http://wkhtmltopdf.org/downloads.html">ここからパッケージをダウンロード</a>
+<ul>
+<li>Windowsは未検証ですが、MinGWの方を試してみてください</li>
+</ul></li>
+<li>インストール</li>
+</ol></li>
+<li>パッケージマネージャでインストール
+<ul>
+<li>Mac: <code>$ brew cask install wkhtmltopdf</code>
+<ul>
+<li>Caskの方なので注意</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="動作確認-pandoc単体" class="slide level1">
+<h1>動作確認: Pandoc単体</h1>
+<p>Bashにて確認（コマンドプロンプトも同様のはず）</p>
+<pre><code>$ pandoc --version
+$ pandoc --list-input-formats
+$ pandoc --list-output-formats
+$ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
+&lt;p&gt;&lt;strong&gt;Hello&lt;/strong&gt;&lt;/p&gt;</code></pre>
+</section>
+<section id="動作確認-pandoc-wkhtmltopdf-pdf" class="slide level1">
+<h1>動作確認: Pandoc + wkhtmltopdf (PDF)</h1>
+<pre><code>$ echo &quot;**Hello**&quot; | pandoc -f markdown -t html5 -o hello.pdf</code></pre>
+</section>
+<section id="このスライドを自分で作ろう" class="slide level1">
+<h1>このスライドを自分で作ろう</h1>
+</section>
+<section id="pandocで作れるスライド" class="slide level1">
+<h1>Pandocで作れるスライド</h1>
+<ul>
+<li>今回は「reveal.js」形式に変換
+<ul>
+<li>HTML+JavaScriptによるプレゼンテーション</li>
+</ul></li>
+<li>補足: Pandocでは他のプレゼン形式にも変換できる
+<ul>
+<li>LaTeX Beamer</li>
+<li>reveal.js以外のHTMLプレゼン（割愛）</li>
+</ul></li>
+</ul>
+</section>
+<section id="reveal.js" class="slide level1">
+<h1>reveal.js</h1>
+<ul>
+<li>HTML/CSS/JavaScriptで実装されたプレゼンWebアプリ</li>
+<li>クライアントサイドで完結→GitHub Pagesにアップロード可能</li>
+</ul>
+</section>
+<section id="実際のソースコード" class="slide level1">
+<h1>実際のソースコード</h1>
+<ul>
+<li>このスライド自体はGitHub Pagesでアップされています</li>
+<li>GitHubリポジトリ: <a href="https://github.com/sky-y/haskell-skype-pandoc-1" class="uri">https://github.com/sky-y/haskell-skype-pandoc-1</a>
+<ul>
+<li>Markdown (raw): <a href="https://raw.githubusercontent.com/sky-y/haskell-skype-pandoc-1/master/index.p.md" class="uri">https://raw.githubusercontent.com/sky-y/haskell-skype-pandoc-1/master/index.p.md</a></li>
+</ul></li>
+</ul>
+<pre><code>$ git clone https://github.com/sky-y/haskell-skype-pandoc-1.git`</code></pre>
+</section>
+<section id="reveal.jsのライブラリを入れる" class="slide level1">
+<h1>reveal.jsのライブラリを入れる</h1>
+<ul>
+<li>本来の手順
+<ul>
+<li><a href="https://github.com/hakimel/reveal.js/releases">Releases · hakimel/reveal.js</a> の「Downloads」にあるzipまたはtar.gzをダウンロードし、展開する</li>
+<li>フォルダの中の<code>index.html</code>を書き換えて、ダブルクリックするとそのままブラウザで動く</li>
+</ul></li>
+<li>今回
+<ul>
+<li>テーマ(CSS)をカスタマイズしている
+<ul>
+<li>このスライドでは<code>sky</code>をカスタマイズしたCSS(<code>sky-sky-y</code>)を作った</li>
+<li>上記のGitHubリポジトリの「reveal.js-3.4.0/css/theme」に置いている</li>
+</ul></li>
+<li><code>$ cd haskell-skype-pandoc-1/</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="markdownを書く" class="slide level1">
+<h1>Markdownを書く</h1>
+<ul>
+<li>今回はタイトルを編集してみましょう
+<ul>
+<li>2行目: <code>title: (ここを変更する)</code></li>
+<li>3行目: <code>author: (ここを変更する)</code></li>
+</ul></li>
+<li>その他は、PandocのMarkdownで書く
+<ul>
+<li><a href="http://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc - Pandoc User’s Guide</a>
+<ul>
+<li><a href="http://sky-y.github.io/site-pandoc-jp/users-guide/">Pandoc ユーザーズガイド 日本語版</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="補足-ヘッダについて" class="slide level1">
+<h1>補足: ヘッダについて</h1>
+<ul>
+<li>ヘッダには2種類ある
+<ul>
+<li>Title block (<code>%</code>ではじまる、簡潔)</li>
+<li>YAML metadata (<code>---</code>ではじまり<code>...</code>でおわる、高機能)
+<ul>
+<li>テンプレート内で使用するための変数を埋め込める</li>
+</ul></li>
+</ul></li>
+<li>詳細はユーザーズガイドの「<a href="http://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc">Producing slide shows with pandoc</a>」を参照</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<pre><code>---
+title: ほげ
+author: (あなたの名前)
+date: 2017年1月20日
+revealjs-url: reveal.js-3.4.0
+theme: sky-sky-y
+transition: fade
+（略）
+...</code></pre>
+</section>
+<section id="pandocコマンド" class="slide level1">
+<h1>pandocコマンド</h1>
+<pre><code>$ pandoc index.p.md -s -t revealjs -o index.html</code></pre>
+<ul>
+<li><code>-s</code>: standalone (ヘッダ付きの完全なファイルを出力)</li>
+<li><code>-t</code>: 出力フォーマット(reveal.js)</li>
+<li><code>-o</code>: 出力ファイル名</li>
+</ul>
+</section>
+<section id="プレゼンファイルを開く" class="slide level1">
+<h1>プレゼンファイルを開く</h1>
+<pre><code>$ open index.html    # Mac/Linux
+&gt; start index.html   # Windows</code></pre>
+</section>
+<section id="htmlを変換してみる" class="slide level1">
+<h1>HTMLを変換してみる</h1>
+</section>
+<section id="例-connpassのhtmlからmarkdownを求めたい" class="slide level1">
+<h1>例: connpassのHTMLからMarkdownを求めたい</h1>
+<ul>
+<li>準備の際に実際にやりました</li>
+<li>オーガナイザーさんにconnpassページ原稿を渡したい</li>
+<li>やっぱりMarkdownで書きたい
+<ul>
+<li><a href="http://help.connpass.com/organizers/markdown">connpass自体はMarkdown記法を持っている</a></li>
+</ul></li>
+<li>藤原はconnpassの本イベントページを編集する権限がない
+<ul>
+<li><strong>そうだ、HTMLをPandocで読み込めば、Markdownがゲットできる！！</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="connpassのhtmlを取得" class="slide level1">
+<h1>connpassのHTMLを取得</h1>
+<ul>
+<li><a href="https://haskell-with-skype.connpass.com/event/48446/">Pandocチュートリアル 第1回 - connpass</a></li>
+<li>メニューアイコン（または右クリック）で「ソースを表示」</li>
+<li>そのまま<code>Command-S (Ctrl-C)</code>でHTMLを保存(<code>connpass.html</code>とする)</li>
+</ul>
+</section>
+<section id="q-このmarkdownは何の方言に近いか" class="slide level1">
+<h1>Q: このMarkdownは何の方言に近いか？</h1>
+<ul>
+<li><a href="http://help.connpass.com/organizers/markdown">connpassで使えるMarkdown記法 - connpass ご利用ガイド</a></li>
+<li>ヒント
+<ul>
+<li><code>http://connpass.com URLは自動的にリンクになります。</code>
+<ul>
+<li><a href="http://connpass.com" class="uri">http://connpass.com</a> URLは自動的にリンクになります。</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="a-github-flavored-markdowngfmに近い" class="slide level1">
+<h1>A: GitHub Flavored Markdown(gfm)に近い</h1>
+<ul>
+<li>Pandocのデフォルトで使えるMarkdown方言のうち、自動リンク記法はgfmが対応</li>
+<li>このように、出所の分からないMarkdown仕様でも、ある程度なら処理系を推測できる
+<ul>
+<li>（今後の課題として、メジャーなサービスについて方言を比較できるようにしたい）</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocでmarkdownに変換" class="slide level1">
+<h1>PandocでMarkdownに変換</h1>
+<pre><code>$ pandoc connpass.html -t markdown_github -o connpass.md</code></pre>
+</section>
+<section id="latexを変換してみる" class="slide level1">
+<h1>LaTeXを変換してみる</h1>
+</section>
+<section id="latexを変換してみる-1" class="slide level1">
+<h1>LaTeXを変換してみる</h1>
+<ul>
+<li>注意: 文字コードはUTF-8に統一してください</li>
+<li>サンプル
+<ul>
+<li><a href="http://www.comp.tmu.ac.jp/tsakai/lectures/intro_tex.html">TeX入門</a></li>
+<li><code>$ cd ../example-paper</code></li>
+<li><code>input.tex</code>というファイル</li>
+</ul></li>
+</ul>
+</section>
+<section id="latexを変換してみる-2" class="slide level1">
+<h1>LaTeXを変換してみる</h1>
+<pre><code>$ pandoc input.tex -s -o output.docx</code></pre>
+</section>
+<section id="スタイルを変更する割愛" class="slide level1">
+<h1>スタイルを変更する（割愛）</h1>
+<ul>
+<li>参考: <a href="http://qiita.com/sky_y/items/aab3f93a32a711a54e74">プログラマの文書作成術：Markdown, LaTeXなどの文書からWord文書を生成する - Qiita</a></li>
+</ul>
+</section>
+<section id="質問作業もくもく会" class="slide level1">
+<h1>質問・作業・もくもく会</h1>
+<ul>
+<li>Slackにて受け付けます （<code>#field</code>）</li>
+<li>TwitterでもOKです
+<ul>
+<li><a href="https://twitter.com/sky_y">@sky_y | Twitter</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="補足" class="slide level1">
+<h1>補足</h1>
+</section>
+<section id="pandocの今後の課題" class="slide level1">
+<h1>Pandocの今後の課題</h1>
+<ul>
+<li>日本語に特化した文書フォーマットにほとんど対応していない
+<ul>
+<li>書籍におけるルビや圏点など</li>
+<li>日本語コミュニティの必要性</li>
+</ul></li>
+<li>表形式の文書は対応していない
+<ul>
+<li>Excel文書など→Excel方眼紙への対策には致命的</li>
+<li>サードパーティのプリプロセッサにより部分的に変換する手段はある
+<ul>
+<li>一部の図表（Graphvizなど）はこの方法で取り込むことができる</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="atom向け-markdown-preview-enhanced" class="slide level1">
+<h1>ATOM向け: markdown-preview-enhanced</h1>
+<ul>
+<li><a href="https://atom.io/packages/markdown-preview-enhanced" class="uri">https://atom.io/packages/markdown-preview-enhanced</a></li>
+<li>高機能</li>
+<li>お手軽（依存パッケージが少ない）</li>
+</ul>
+</section>
+<section id="数式プレビュー" class="slide level1">
+<h1>数式プレビュー</h1>
+<p><br /><span class="math display"><em>E</em> = <em>m</em><em>c</em><sup>2</sup></span><br /></p>
+<pre><code>$$E = mc^2$$</code></pre>
+</section>
+<section class="slide level1">
+
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js-3.4.0/lib/js/head.min.js"></script>
+  <script src="reveal.js-3.4.0/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'fast', // default/fast/slow
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js-3.4.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js-3.4.0/plugin/zoom-js/zoom.js', async: true },
+              { src: 'reveal.js-3.4.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
