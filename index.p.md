@@ -7,7 +7,7 @@ theme: sky-sky-y
 transition: fade
 transitionSpeed: fast
 slideNumber: true
-history: true
+history: false
 margin: 0
 ...
 
