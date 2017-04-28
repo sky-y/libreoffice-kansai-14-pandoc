@@ -4,9 +4,9 @@
 ========
 
 -   名前
-    -   藤原 惟
-    -   すかいゆき
-    -   Yuki Fujiwara （本名）
+    -   藤原 由来 (本名, [GitHub](https://github.com/sky-y))
+    -   藤原 惟（[ブログ](http://www.3rd-p-zombie.net/)）
+    -   すかいゆき（[Twitter](https://twitter.com/sky_y)）
 -   職業
     -   フリープログラマ
     -   専門学校 非常勤講師
@@ -21,11 +21,8 @@ Pandocに関する活動
 -   Pandocユーザーズガイドを和訳
     -   [Pandoc ユーザーズガイド 日本語版](http://sky-y.github.io/site-pandoc-jp/users-guide/)
     -   バージョンが古くなったので、改訂を予定
-
-------------------------------------------------------------------------
-
-発表を始めます
-==============
+-   日本Pandocユーザ会
+    -   最近Slack作りました: [Slack登録フォーム](https://docs.google.com/forms/d/e/1FAIpQLScdXINuMSFlKFk9YClkDUtvZNaYFWVSiJyleYjtMVbIHqwJhA/viewform)
 
 ------------------------------------------------------------------------
 
@@ -53,15 +50,12 @@ Pandocと私
 
 ------------------------------------------------------------------------
 
-このチュートリアルでやること（2回分の概要）
-===========================================
+この発表の概要
+==============
 
--   第1回（今回） Pandocでドキュメントを変換しよう
-    -   Pandocをツールとして使う（入門編、第2回の基礎知識）
--   第2回 HaskellでPandocを拡張してみよう
-    -   Haskellのやさしい入門（を目指します）
-    -   「日常的な実用言語」としてのHaskellを体験してもらいたい
-    -   Pandocのソースコードも少し読みます
+-   Pandocでドキュメントを変換しよう
+    -   Markdown→LibreOffice Writer
+    -   LibreOffice Writer→Markdown
 
 ------------------------------------------------------------------------
 
@@ -73,7 +67,7 @@ Markdownって何？
 -   そのうちGitHubやPHPなどで記法が拡張された
     -   MultiMarkdownやPandocの登場をきっかけに、目的も「論文」「プレゼンテーション」「電子書籍」など用途が広がった
     -   数々の「方言」がある状態
--   しかし、本当に基本のMarkdownだけを覚えれば、大抵は書けます
+-   基本のMarkdownだけを覚えれば、大抵は書けます
     -   プレビューを行うのが鉄則
 
 ------------------------------------------------------------------------
@@ -81,12 +75,11 @@ Markdownって何？
 こんなことに困っていませんか？
 ==============================
 
--   書類をWord形式で提出しなければならないけど、Word重いし面倒
--   バージョン管理をしたいけど、Word文書は`git diff`とか取りにくい
--   Word文書をHTMLに変換せよとお達しがあった
--   手元にLaTeXのソースがあって、それをEPUBにしてくれと言われた（実話）
--   卒論のLaTeX辛いので、Markdownで書きたい
--   Markdownでスライドショーを作りたい
+-   Writerが重いのでテキストファイルで下書きしたい
+-   バージョン管理をしたいけど、Writer文書は`git diff`が取りにくい
+-   Writer文書をHTMLに変換せよとお達しがあった
+-   Writer文書をSphinx(reST)で使いたい
+-   Markdownなどでスライドショーを作りたい
 
 ------------------------------------------------------------------------
 
@@ -113,14 +106,26 @@ Pandocとは
 ============================
 
 -   入力
-    -   Markdown (Pandoc, CommonMark, PHP Markdown Extra, GitHub-Flavored Markdown, MultiMarkdown)
-    -   (subsets of) Textile, reStructuredText, HTML, LaTeX, MediaWiki markup, Emacs Org mode
-    -   OPML, DocBook, EPUB, ODT and Word docx
+    -   **Markdown** (Pandoc, CommonMark, PHP Markdown Extra, GitHub-Flavored Markdown, MultiMarkdown)
+    -   (subsets of) Textile, **reStructuredText, HTML, LaTeX, MediaWiki markup**, Emacs Org mode
+    -   OPML, DocBook, EPUB, **ODT** and Word docx
 -   出力
-    -   Markdown (同上)
+    -   入力フォーマットのほとんど（ODT含む）
+    -   **Markdown**
     -   manページ, AsciiDoc, InDesign ICML
-    -   プレゼンテーション: LaTeX Beamer, HTML5(reveal.jsなど)
+    -   **プレゼンテーション**: LaTeX Beamer, HTML5(reveal.jsなど)
     -   PDF (wkhtmltopdfまたはLaTeXエンジンが必要)
+
+------------------------------------------------------------------------
+
+Pandocでできないこと
+====================
+
+-   表主体の文書を扱うこと
+    -   Excel, LibreOffice Calc
+    -   一部に簡単な表を埋め込むことはできる（HTMLの`<table>`相当）
+-   LibreOffice Impressに/を変換すること
+    -   LaTeX Beamer/HTMLプレゼンには変換可能
 
 ------------------------------------------------------------------------
 
@@ -158,12 +163,26 @@ Pandocが扱えるMarkdown方言
     -   Pandocにおける標準のMarkdown方言
     -   技術文書から論文・電子書籍まで幅広く対応
 -   GitHub Flavored Markdown (gfm): `-f markdown_github`
-    -   プログラマ・フレンドリーな方言
+    -   GitHubの標準、プログラマ・フレンドリーな方言
 -   PHP Markdown Extra: `-f markdown_phpextra`
     -   最近はMarkdown Extraとも呼ばれる
 -   MultiMarkdown: `-f markdown_mmd`
     -   HTMLだけでなくLaTeXなどの論文も意図した処理系
 -   CommonMark: `-f commonmark`
+    -   仕様の曖昧さをなくすことを目的とした仕様/処理系
+    -   ここ最近は、事実上の標準に近づく（公式な標準ではない）
+
+------------------------------------------------------------------------
+
+補足: Markdownと標準仕様
+========================
+
+-   RFC
+    -   [RFC 7763 - The text/markdown Media Type](https://tools.ietf.org/html/rfc7763)
+    -   [RFC 7764 - Guidance on Markdown: Design Philosophies, Stability Strategies, and Select Registrations](https://tools.ietf.org/html/rfc7764)
+-   RFCでも方言は統一できなかった
+    -   代わりに、Media Typeにて「Markdownであること」と「方言の名前」を明示する方法を定めた
+    -   参考: <http://tk0miya.hatenablog.com/entry/2016/12/30/205418>
 
 ------------------------------------------------------------------------
 
@@ -178,35 +197,51 @@ Pandocが扱えるMarkdown方言
 -   Mac: ターミナル.app or iTerm2
 -   Windows: (今回は)コマンドプロンプト
     -   (分かっている方は)お好きなターミナルでも結構です
+-   Linux: お好きなターミナル
 
 ------------------------------------------------------------------------
 
-Pandocのインストール
-====================
+Pandocのインストール: パッケージマネージャ編
+============================================
 
--   Haskell処理系は不要です
+-   原則として、Haskell処理系は不要です
+-   Mac([Homebrew](http://brew.sh/index_ja.html))
+    -   `$ brew install pandoc`
+-   Windows([Chocolatey](https://chocolatey.org/))
+    -   `> cinst -y pandoc`
+-   Linux
+    -   バージョンが古いことがあるので注意
+    -   Debian: `$ sudo apt-get install pandoc`
+    -   CentOS: [pandocをCentOS7にインストール - Qiita](http://qiita.com/fk_2000/items/2ea57ea36b523c0cae5a) を参照
+    -   ソースコード: [Stack](https://docs.haskellstack.org/en/stable/README/)(Haskellビルドツール)が必要
+        -   [GitHub - jgm/pandoc: Universal markup converter](https://github.com/jgm/pandoc)
+
+------------------------------------------------------------------------
+
+Pandocのインストール: インストーラ編
+====================================
+
 -   パッケージを直接落としてインストール
     1.  [ここからパッケージをダウンロード](https://github.com/jgm/pandoc/releases/latest)
         -   Windows: `.msi`, Mac: `.pkg`
     2.  インストール
--   パッケージマネージャでインストール
-    -   Mac([Homebrew](http://brew.sh/index_ja.html)): `$ brew install pandoc`
-    -   Windows([Chocolatey](https://chocolatey.org/)): `> cinst pandoc`
-        -   Chocolateyのみ、PowerShell（管理者権限付き）がおすすめ
-    -   Linux(Debian): `$ sudo apt-get install pandoc`
 
 ------------------------------------------------------------------------
 
 wkhtmltopdfのインストール
 =========================
 
--   パッケージを直接落としてインストール
-    1.  [ここからパッケージをダウンロード](http://wkhtmltopdf.org/downloads.html)
-        -   Windowsは未検証ですが、MinGWの方を試してみてください
-    2.  インストール
+-   PDF出力のために必要
+    -   TeXLive/MacTeXを入れていれば、LaTeX処理系も利用可能（説明略）
+    -   ただし、pLaTeXはNGなので、LuaLaTeX/XeLaTeXのみ
 -   パッケージマネージャでインストール
     -   Mac: `$ brew cask install wkhtmltopdf`
         -   Caskの方なので注意
+    -   Windows: `> cinst -y wkhtmltopdf`
+    -   Debian: `$ sudo apt-get install wkhtmltopdf`
+-   パッケージを直接落としてインストール
+    1.  [wkhtmltopdf - Downloads](http://wkhtmltopdf.org/downloads.html)からダウンロード
+    2.  インストール
 
 ------------------------------------------------------------------------
 
@@ -230,87 +265,37 @@ Bashにて確認（コマンドプロンプトも同様のはず）
 
 ------------------------------------------------------------------------
 
-このスライドを自分で作ろう
-==========================
+おまけ: Pandocで作れるスライド
+==============================
 
-------------------------------------------------------------------------
-
-Pandocで作れるスライド
-======================
-
+-   このスライド自体をPandocで生成しました
 -   今回は「reveal.js」形式に変換
     -   HTML+JavaScriptによるプレゼンテーション
+    -   クライアントサイドで完結→GitHub Pagesにアップロード可能
 -   補足: Pandocでは他のプレゼン形式にも変換できる
     -   LaTeX Beamer
     -   reveal.js以外のHTMLプレゼン（割愛）
 
 ------------------------------------------------------------------------
 
-reveal.js
-=========
-
--   HTML/CSS/JavaScriptで実装されたプレゼンWebアプリ
--   クライアントサイドで完結→GitHub Pagesにアップロード可能
-
-------------------------------------------------------------------------
-
 実際のソースコード
 ==================
 
--   このスライド自体はGitHub Pagesでアップされています
--   GitHubリポジトリ: <https://github.com/sky-y/haskell-skype-pandoc-1>
-    -   Markdown (raw): <https://raw.githubusercontent.com/sky-y/haskell-skype-pandoc-1/master/index.p.md>
-
-<!-- -->
-
-    $ git clone https://github.com/sky-y/haskell-skype-pandoc-1.git`
-
-reveal.jsのライブラリを入れる
-=============================
-
--   本来の手順
-    -   [Releases · hakimel/reveal.js](https://github.com/hakimel/reveal.js/releases) の「Downloads」にあるzipまたはtar.gzをダウンロードし、展開する
-    -   フォルダの中の`index.html`を書き換えて、ダブルクリックするとそのままブラウザで動く
--   今回
-    -   テーマ(CSS)をカスタマイズしている
-        -   このスライドでは`sky`をカスタマイズしたCSS(`sky-sky-y`)を作った
-        -   上記のGitHubリポジトリの「reveal.js-3.4.0/css/theme」に置いている
-    -   `$ cd haskell-skype-pandoc-1/`
+-   このスライド自体がGitHub Pagesにアップロードされています
+-   GitHubリポジトリ:
+    -   Markdown (raw):
 
 ------------------------------------------------------------------------
 
-Markdownを書く
-==============
-
--   今回はタイトルを編集してみましょう
-    -   2行目: `title: (ここを変更する)`
-    -   3行目: `author: (ここを変更する)`
--   その他は、PandocのMarkdownで書く
-    -   [Pandoc - Pandoc User’s Guide](http://pandoc.org/MANUAL.html#pandocs-markdown)
-        -   [Pandoc ユーザーズガイド 日本語版](http://sky-y.github.io/site-pandoc-jp/users-guide/)
+Pandocチュートリアル: LibreOffice Writer文書を中心に
+====================================================
 
 ------------------------------------------------------------------------
 
-補足: ヘッダについて
-====================
+これからやること
+================
 
--   ヘッダには2種類ある
-    -   Title block (`%`ではじまる、簡潔)
-    -   YAML metadata (`---`ではじまり`...`でおわる、高機能)
-        -   テンプレート内で使用するための変数を埋め込める
--   詳細はユーザーズガイドの「[Producing slide shows with pandoc](http://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc)」を参照
-
-------------------------------------------------------------------------
-
-    ---
-    title: ほげ
-    author: (あなたの名前)
-    date: 2017年1月20日
-    revealjs-url: reveal.js-3.4.0
-    theme: sky-sky-y
-    transition: fade
-    （略）
-    ...
+-   LibreOffice Writer
 
 ------------------------------------------------------------------------
 
@@ -325,107 +310,78 @@ pandocコマンド
 
 ------------------------------------------------------------------------
 
-プレゼンファイルを開く
-======================
+ファイルを開く
+==============
 
     $ open index.html    # Mac/Linux
     > start index.html   # Windows
 
 ------------------------------------------------------------------------
 
-HTMLを変換してみる
-==================
+「書式の自由」について
+======================
 
 ------------------------------------------------------------------------
 
-例: connpassのHTMLからMarkdownを求めたい
+Pandocも自由を愛する者の味方です
+================================
+
+-   LibreOfficeの理念
+    -   [私たちは誰? | LibreOffice](https://ja.libreoffice.org/about-us/who-are-we/)
+
+> LibreOffice は、ちょうどあなたのように、フリーソフトウェアの原理を信じ、そしてその成果を制限のない形で世界中で共有することを信じるユーザーによって開発されています。
+
+------------------------------------------------------------------------
+
+Pandocの思想的インパクト＝「書式の自由」
 ========================================
 
--   準備の際に実際にやりました
--   オーガナイザーさんにconnpassページ原稿を渡したい
--   やっぱりMarkdownで書きたい
-    -   [connpass自体はMarkdown記法を持っている](http://help.connpass.com/organizers/markdown)
--   藤原はconnpassの本イベントページを編集する権限がない
-    -   **そうだ、HTMLをPandocで読み込めば、Markdownがゲットできる！！**
+-   「あらゆる書式は変換できる」というメッセージ
+    -   現状、Excelなどは処理できないが・・・
+-   真に「書式の自由」がもたらされたとき、何が起こるか？
+    -   これから理想論を話します
 
 ------------------------------------------------------------------------
 
-connpassのHTMLを取得
-====================
+「書式の自由」がもたらされたとき
+================================
 
--   [Pandocチュートリアル 第1回 - connpass](https://haskell-with-skype.connpass.com/event/48446/)
--   メニューアイコン（または右クリック）で「ソースを表示」
--   そのまま`Command-S (Ctrl-C)`でHTMLを保存(`connpass.html`とする)
-
-------------------------------------------------------------------------
-
-Q: このMarkdownは何の方言に近いか？
-===================================
-
--   [connpassで使えるMarkdown記法 - connpass ご利用ガイド](http://help.connpass.com/organizers/markdown)
--   ヒント
-    -   `http://connpass.com URLは自動的にリンクになります。`
-        -   <http://connpass.com> URLは自動的にリンクになります。
+-   各々が好きな書式やソフトで文書を作成できる
+-   それを、目的の書式に変換する
+    -   確定申告
+    -   事務手続き
+    -   etc.
+-   適切な形式で入力・データベース化・出力できる
+    -   MS Officeで入力してもいい（もちろんLibreOfficeが嬉しいけど）
+    -   オープンデータの推進
 
 ------------------------------------------------------------------------
 
-A: GitHub Flavored Markdown(gfm)に近い
-======================================
+「書式の自由」が与える真のインパクト
+====================================
 
--   Pandocのデフォルトで使えるMarkdown方言のうち、自動リンク記法はgfmが対応
--   このように、出所の分からないMarkdown仕様でも、ある程度なら処理系を推測できる
-    -   （今後の課題として、メジャーなサービスについて方言を比較できるようにしたい）
-
-------------------------------------------------------------------------
-
-PandocでMarkdownに変換
-======================
-
-    $ pandoc connpass.html -t markdown_github -o connpass.md
+-   例：「Excel方眼紙（ネ申Excel）」の縛りから人々が解放されたら？
+-   「書式の縛り」が生んできた仕事がなくなる→雇用がなくなる
+    -   いわゆるシンギュラリティの一種？
+    -   例：社内の「Excel職人」がお役御免となる
+    -   その人たちはどうなるのか？
 
 ------------------------------------------------------------------------
 
-LaTeXを変換してみる
-===================
+課題：自由の前提として「肯定」と「居場所」が必要になる
+======================================================
+
+-   「仕事＝プライド」の人は、少なくないらしい
+    -   そのような人にとって、自由＝「何をしてもいい」という状況は虚しく息苦しい
+    -   「自由からの逃走」（エーリッヒ・フロム）は起こりうる
+-   「仕事＝プライド」の人を単に非難してはいけない
+    -   ただ、受け入れること
+    -   気軽に寄れる「居場所」をつくること
 
 ------------------------------------------------------------------------
 
-LaTeXを変換してみる
-===================
-
--   注意: 文字コードはUTF-8に統一してください
--   サンプル
-    -   [TeX入門](http://www.comp.tmu.ac.jp/tsakai/lectures/intro_tex.html)
-    -   `$ cd ../example-paper`
-    -   `input.tex`というファイル
-
-------------------------------------------------------------------------
-
-LaTeXを変換してみる
-===================
-
-    $ pandoc input.tex -s -o output.docx
-
-------------------------------------------------------------------------
-
-スタイルを変更する（割愛）
-==========================
-
--   参考: [プログラマの文書作成術：Markdown, LaTeXなどの文書からWord文書を生成する - Qiita](http://qiita.com/sky_y/items/aab3f93a32a711a54e74)
-
-------------------------------------------------------------------------
-
-質問・作業・もくもく会
-======================
-
--   Slackにて受け付けます （`#field`）
--   TwitterでもOKです
-    -   [@sky\_y | Twitter](https://twitter.com/sky_y)
-
-------------------------------------------------------------------------
-
-補足
-====
+最後に
+======
 
 ------------------------------------------------------------------------
 
@@ -442,20 +398,18 @@ Pandocの今後の課題
 
 ------------------------------------------------------------------------
 
-ATOM向け: markdown-preview-enhanced
-===================================
+日本Pandocユーザ会
+==================
 
--   <https://atom.io/packages/markdown-preview-enhanced>
--   高機能
--   お手軽（依存パッケージが少ない）
-
-------------------------------------------------------------------------
-
-数式プレビュー
-==============
-
-*E* = *m**c*<sup>2</sup>
-
-    $$E = mc^2$$
+-   Webサイトはリニューアル予定
+-   Slackを始めました
+    -   [Slack登録フォーム](https://docs.google.com/forms/d/e/1FAIpQLScdXINuMSFlKFk9YClkDUtvZNaYFWVSiJyleYjtMVbIHqwJhA/viewform)
 
 ------------------------------------------------------------------------
+
+Q&A
+===
+
+-   連絡先
+    -   <sky.y.0079@gmail.com>
+    -   Twitter: \[@sky\_y\](https://twitter.com/sky\_y)
