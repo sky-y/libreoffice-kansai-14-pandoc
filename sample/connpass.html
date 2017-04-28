@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<!--
+
+
+   _|_|_|    _|_|    _|_|_|    _|_|_|    _|_|_|      _|_|_|    _|_|_|    _|_|_|
+ _|        _|    _|  _|    _|  _|    _|  _|    _|  _|    _|  _|_|      _|_|
+ _|        _|    _|  _|    _|  _|    _|  _|    _|  _|    _|      _|_|      _|_|
+   _|_|_|    _|_|    _|    _|  _|    _|  _|_|_|      _|_|_|  _|_|_|    _|_|_|
+                                         _|
+                                         _|
+-->
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" itemscope itemtype="http://schema.org/Event">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"ed03e7dee2","agent":"","transactionName":"M1MAY0FRVkRTU0ENXQoZJEJdU0xeXV4aB10KWBJWQEMWVF1CUEpfC1QLW1YeTl5XR0ZefwtUC1tWZlFSRQ==","applicationID":"32737247","errorBeacon":"bam.nr-data.net","applicationTime":105}</script>
+<meta http-equiv="content-style-type" content="text/css; charset=utf-8" />
+<meta name="keywords" content="connpass,コンパス,イベント,IT勉強会,検索,開催,募集,参加,ソーシャル連携,アクセス解析,手数料無料" />
+<meta name="description" content="# 関西LibreOffice勉強会とは  関西在住のLibreOfficeユーザーが集まり、ユーザー同士での交流やノウハウ共有を目的として、勉強会を開催しています。 LibreOfficeを使ってい る方、これから使おうと思っている方、興味をお持ちの方、プロジェクトで活動されている方、ちょっと参加してみようと思われたは、奮ってご参加ください。  # イベント概要    * 日時：2017年4月29日(土) 13:00～17:30   * 場所：住友電工情報システム（株）   大阪市淀川区宮原3-4-30（ニッセイ新大阪ビル5階）セミナールーム  http://www.sei-info...." />
+<title>第14回関西LibreOffice勉強会 - connpass</title>
+
+
+
+<link type="text/css" href="https://connpass.com/static/css/connpass.css?20170427112417
+" rel="stylesheet" media="all" />
+
+<link href="https://connpass.com/static/css/exvalidation.css" type="text/css" rel="stylesheet" />
+
+  
+  
+<style>
+/*背景色*/
+body.page_group {
+  
+  background-color: #f7f7f7;
+  
+}
+/*カバー画像*/
+.group_header_area .group_cover {
+  
+  background-image: url(https://connpass.com/static/img/group/group_cover_blank.jpg);
+  
+}
+</style>
+
+
+
+
+
+
+<!-- Google+ Page -->
+<link href="https://plus.google.com/106041817090493633309/" rel="publisher" />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="connpass" />
+<meta property="fb:app_id" content="259235460759625" />
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@connpass_jp" />
+<meta name="twitter:url" content="https://connpass.com/event/53960/?utm_campaign=twitter_card_event_53960&utm_source=twitter_card&utm_medium=twitter" />
+
+<meta property="og:title" content="第14回関西LibreOffice勉強会 (2017/04/29 13:00〜)" />
+<meta property="og:url" content="https://connpass.com/event/53960/" />
+
+<meta property="og:image" content="https://connpass-tokyo.s3.amazonaws.com/thumbs/b7/ea/b7eac1312d1e03c202c270f2ccb350bf.png" />
+<meta property="og:description" content="# 関西LibreOffice勉強会とは  関西在住のLibreOfficeユーザーが集まり、ユーザー同士での交流やノウハウ共有を目的として、勉強会を開催しています。 LibreOfficeを使ってい る方、これから使おうと思っている方、興味をお持ちの方、プロジェクトで活動されている方、ちょっと参加してみようと思われたは、奮ってご参加ください。  # イベント概要    * 日時：2017年4月29日(土) 13:00～17:30   * 場所：住友電工情報システム（株）   大阪市淀川区宮原3-4-30（ニッセイ新大阪ビル5階）セミナールーム  http://www.sei-info...." />
+
+<meta itemprop="name" content="第14回関西LibreOffice勉強会" />
+<meta itemprop="description" content="# 関西LibreOffice勉強会とは  関西在住のLibreOfficeユーザーが集まり、ユーザー同士での交流やノウハウ共有を目的として、勉強会を開催しています。 LibreOfficeを使ってい る方、これから使おうと思っている方、興味をお持ちの方、プロジェクトで活動されている方、ちょっと参加してみようと思われたは、奮ってご参加ください。  # イベント概要    * 日時：2017年4月29日(土) 13:00～17:30   * 場所：住友電工情報システム（株）   大阪市淀川区宮原3-4-30（ニッセイ新大阪ビル5階）セミナールーム  http://www.sei-info...." />
+
+<meta itemprop="image" content="https://connpass-tokyo.s3.amazonaws.com/event/10005/ef4e4873af9b45bc96599ed15f23073a.png" />
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  var _ravenQueue = [];
+  window.onerror = function(message, file, lineNumber) {
+    var msg = lineNumber ? message + " at " + lineNumber : message;
+      _ravenQueue.push({message: msg, culprit: file});
+  };
+</script>
+
+
+
+<link rel="shortcut icon" href="https://connpass.com/static/img/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="apple-touch-icon-precomposed" href="https://connpass.com/static/img/apple_touch_icon.png" />
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+  if (typeof console == "undefined") {window.console={log: function () {}};console.warn = console.debug = console.log;}
+</script>
+
+
+<script type="text/javascript">
+  function cst(cat, evt, targetUrl) {
+    if (window._gaq) {
+      _gaq.push(['_trackSocial', cat, evt, targetUrl]);
+    } else {
+      console.log("trackSocial(" + cat + ", " + evt + ", " + targetUrl + ")");
+    }
+  };
+  function cet(cat, evt, label, value, non_interaction) {
+    if (!label) {
+      label = 'None';
+    }
+    if (window._gaq) {
+      _gaq.push(['_trackEvent', cat, evt, label, value, non_interaction]);
+    } else {
+      console.log("trackEvent(" + cat + ", " + evt + ", " + label + ", " + value + ", " + non_interaction + ")");
+    }
+  };
+  function tol(link, cat, evt, label, value, non_interaction) {
+    cet(cat, evt, label, value, non_interaction);
+    if (link) {
+      var func;
+      if (link.href) {
+        func = function() {
+          document.location.href = link.href;
+        };
+      } else {
+        if (link.submit) {
+          func = function() {
+            link.submit();
+          };
+        } else {
+          if (link.form) {
+            func = function() {
+              link.form.submit();
+            };
+          }
+        }
+      }
+      if (func) {
+        setTimeout(func, 100);
+      }
+    }
+  };
+</script>
+
+<script type="text/javascript">
+
+window.track = function (url) {
+  try {
+    var xhr;
+
+    if(typeof XMLHttpRequest !== 'undefined') {
+      xhr = new XMLHttpRequest();
+    } else {
+      var i,len,versions = ["MSXML2.XmlHttp.5.0",
+                            "MSXML2.XmlHttp.4.0",
+                            "MSXML2.XmlHttp.3.0",
+                            "MSXML2.XmlHttp.2.0",
+                            "Microsoft.XmlHttp"];
+      for (i = 0, len = versions.length; i < len; i+=1) {
+        try {
+          xhr = new ActiveXObject(versions[i]);
+          break;
+        } catch(e){}
+      } // end for
+      if (!xhr) { return; }
+    }
+
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader("X-CSRFToken", "LWoCOj1qsbUCUBI8KUM5eEbkc7vV8mVo");
+    xhr.send('');
+  } catch(e2) {  }
+};
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26036000-1']);
+  _gaq.push(['_setDomainName', 'connpass.com']);
+  _gaq.push(['_setCustomVar', 1, 'Authenticated', 'false', 1]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script language="JavaScript" type="text/javascript" charset="UTF-8" src="//cdn.bigmining.com/private/media/js/connpass_bigmining.js"></script>
+
+<script type="text/javascript">
+track('https://connpass.com/stats/track/?url=https%3A//connpass.com/event/53960/&profile=event/53960&referrer=' + encodeURI(document.referrer));
+</script>
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+</head>
+
+<body class="page_group page_edit page_event vevent" id="event_detail">
+
+<div id="wrapper" class="lang_ja">
+
+  <div id="header">
+    <div class="container clearfix">
+      <h1><a href="https://connpass.com/" title="connpass - エンジニアをつなぐIT勉強会支援プラットフォーム"><img src="https://connpass.com/static/img/common/sitelogo_266x132_bp.png" alt="connpass - エンジニアをつなぐIT勉強会支援プラットフォーム" height="66"></a></h1>
+
+      
+        <form action="https://connpass.com/search/" method="GET" id="header_event_search_form">
+          <div class="header_search">
+            <input type="text" class="form_input_text" name="q" id="id_q" value="" placeholder="イベント検索">
+            <button type="submit" class="btn btn_default btn_size_small"><img src="https://connpass.com/static/img/common/icon_search.png" alt="イベント検索"></button>
+          </div>
+        </form>
+      
+
+      
+        <div class="header_nav_contents">
+          <ul>
+          
+            <li><a href="https://connpass.com/#category_link_list">カテゴリ一覧</a></li>
+          
+            <li><a href="https://connpass.com/explore/">新着イベント</a></li>
+          </ul>
+        </div>
+        
+          
+            <div class="header_nav_login">
+              <a class="btn btn_default login" href="https://connpass.com/login/?next=https%3A//connpass.com/event/53960/">ログイン・新規登録</a>
+            </div>
+          
+        
+      
+
+
+    </div>
+  </div>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="information_area">
+
+    <p>
+      <span class="label_info">お知らせ</span>
+      ビープラウド、「90日で稼げるプログラマーに」<a href="https://pyq.jp/?utm_campaign=release&utm_source=connpass&utm_medium=text_link&utm_content=connpass_header_message" target="_blank">オンライン学習サービス「PyQ（パイキュー）」</a>を販売開始
+    </p>
+
+  </div>
+</div>
+
+
+
+
+
+
+  <div class="social_btn_area clearfix">
+    <div class="container">
+      <span class="hatena">
+        
+        <a href="http://b.hatena.ne.jp/entry/connpass.com/event/53960/" class="hatena-bookmark-button" data-hatena-bookmark-title="第14回関西LibreOffice勉強会" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+      </span>
+      <span class="google">
+        <span><g:plusone size="medium" href="https://connpass.com/event/53960/"></g:plusone></span>
+      </span>
+      <span class="facebook">
+        
+<fb:like href="https://connpass.com/event/53960/" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
+
+
+
+
+      </span>
+      <span class="twitter">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="" data-text="第14回関西LibreOffice勉強会" data-lang="ja" data-related="connpass_jp" data-hashtags="LibOKansai"></a>
+      </span>
+    </div>
+  </div>
+
+
+
+<div id="contents" class="container main_side_column clearfix">
+  <div id="flash_message_area" style="display: none;">
+    
+  </div>
+
+  
+  <div class="clearfix">
+    
+      
+      <div id="main">
+        
+<div class="group_box event_detail_area">
+  <div class="group_inner event_header_area">
+
+    <h2 class="event_title">
+      <span class="label_status_event offer">
+        
+            <p class="month">4月</p>
+            <p class="day">29</p>
+        
+      </span>
+
+      第14回関西LibreOffice勉強会
+      
+
+      <div class="EventBookmarkBox bookmark_area">
+        
+          
+        
+      </div>
+
+    </h2>
+    <p class="event_owner">主催 : 関西LibreOffice勉強会実行委員会</p>
+
+    
+      <a href="https://connpass-tokyo.s3.amazonaws.com/thumbs/ae/87/ae87a1b401c98c4ae97d8e7f6b57fb32.png" target="_blank">
+        <div class="thumbnail" title="第14回関西LibreOffice勉強会" style="background-image:url(https://connpass-tokyo.s3.amazonaws.com/thumbs/ae/87/ae87a1b401c98c4ae97d8e7f6b57fb32.png);"></div>
+      </a>
+    
+
+    
+      <div class="label_hashtag">
+        ハッシュタグ
+        ：<a href="https://twitter.com/search?q=%23LibOKansai" target="_blank">#LibOKansai</a>
+      </div>
+    
+
+  </div>
+
+  
+
+  <div class="group_inner event_ptype_area clearfix">
+    <table class="common_table th20">
+      <tbody>
+        <tr>
+          <th class="text_center">募集内容</th>
+          
+          
+          
+          <td class="participation">
+            <div class="ptypes">
+            
+            
+              <div class="ptype">
+                <p class="ptype_name">参加枠</p>
+                <p class="join_fee">
+                  
+                    無料、もしくは会場払い
+                  
+                </p>
+                <p class="participants">
+                  <span class="determine">
+                    
+                    
+                      先着順
+                    
+                  </span><br>
+
+                  
+                    
+                      <span class="amount"><span>16</span>/24</span>人
+                    
+                  
+                </p>
+              </div>
+            
+            
+            </div>
+          </td>
+          
+        </tr>
+
+  
+  
+      </tbody>
+    </table>
+  </div>
+
+  
+  <h3 class="event_detail_title"><span class="icon_gray_desc">イベントの説明</span></h3>
+  <div id="editor_area" class="group_inner clearfix">
+    <h1>関西LibreOffice勉強会とは</h1>
+<p>関西在住のLibreOfficeユーザーが集まり、ユーザー同士での交流やノウハウ共有を目的として、勉強会を開催しています。
+LibreOfficeを使っている方、これから使おうと思っている方、興味をお持ちの方、プロジェクトで活動されている方、ちょっと参加してみようと思われたは、奮ってご参加ください。</p>
+<h1>イベント概要</h1>
+<ul>
+<li>日時：2017年4月29日(土) 13:00～17:30</li>
+<li>場所：住友電工情報システム（株）<br>
+   大阪市淀川区宮原3-4-30（ニッセイ新大阪ビル5階）セミナールーム<br>
+   <a href="http://www.sei-info.co.jp/company/company_map.html" rel="nofollow">http://www.sei-info.co.jp/company/company_map.html</a></li>
+<li>参加費：無料</li>
+<li>主催：関西LibreOffice勉強会実行委員会</li>
+</ul>
+<h1>アジェンダ</h1>
+<table>
+<thead>
+<tr>
+<th align="left">時間</th>
+<th align="left">内容</th>
+<th>発表者</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">12:45</td>
+<td align="left">受付開始</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">13:00-13:05</td>
+<td align="left">前説</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">13:05-13:20</td>
+<td align="left">参加者自己紹介</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">13:20-14:20</td>
+<td align="left">書式の自由が社会を変える―LibreOfficeとPandocができること</td>
+<td>藤原 由来</td>
+</tr>
+<tr>
+<td align="left">14:20-14:35</td>
+<td align="left">休憩</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">14:35-15:05</td>
+<td align="left">Office文書を手打ちハックする ～FlatODF活用のすすめ～</td>
+<td>岩橋 伴典（いさな）</td>
+</tr>
+<tr>
+<td align="left">15:05-15:15</td>
+<td align="left">休憩</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">15:15-15:35</td>
+<td align="left">LibreOffice Online環境の構築</td>
+<td>内藤　佑太朗</td>
+</tr>
+<tr>
+<td align="left">15:35-15:50</td>
+<td align="left">休憩</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">15:50-16:20</td>
+<td align="left">発表枠4</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">16:20-16:35</td>
+<td align="left">休憩</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">16:35-17:10</td>
+<td align="left">ディスカッション</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">17:10-17:20</td>
+<td align="left">振り返り、クロージング</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1>内容詳細</h1>
+<h3>書式の自由が社会を変える―LibreOfficeとPandocができること(60分) 藤原 由来</h3>
+<p>OSSの文書変換ツールPandocを使うと、Markdown/LaTeX/HTMLなどからLibreOffice Writer文書に変換したり、その逆ができます。この発表ではPandocについて、特にLibreOffice Writer文書を入力・出力文書とした場合を重点的に説明します。その上で、Pandocが示唆する「書式の自由」という概念を、LibreOfficeの理念である「自由」を参照しつつ話してみます。</p>
+<h3>Office文書を手打ちハックする ～FlatODF活用のすすめ～ (30分) 岩橋 伴典（いさな）</h3>
+<p>OpenDocument Formatのプレーンテキスト版「FlatODF」文書をテキストエディターでハックしてみませんか。
+FlatODFなら、ワープロ文書も、表計算シートも、そして精度ある図面だって！テキストエディターで思いのままに作り込めてしまいます。もちろんプレーンテキストなので、編集ツールはテキスト出力さえ出来れば何でもOK。難しいライブラリやインターフェイス利用のノウハウ不要で、簡単に帳票やレポートが作れてしまいます。更にLibreOfficeがあれば、コマンドライン一発で作った文書のPDF化だってできちゃいます。Webのバックエンドに仕込むのだって簡単です。素人にも扱いやすいFlatODFで、いろんな文書を自動生成しちゃいましょう。</p>
+<h3>LibreOffice Online環境の構築（20分）内藤佑太朗</h3>
+<p>所属：アイクラフト株式会社<br>
+LibreOffice OnlineはWebブラウザ上でLibreOfficeファイルを表示・編集可能なソフトウェアです。未だ開発段階ではありますが、日本語ファイルの表示も可能なため、ある程度まで実用に耐えうる状況にあります。今回はそんな 
+LibreOffice Online環境の構築についてお話します。</p>
+<h1>懇親会</h1>
+<p>近くのお店で懇親会を行う予定です。参加確認は当日行います。こちらもご参加ください。</p>
+<h1>問い合わせ先</h1>
+<ul>
+<li>kansai-ooo-staff at <a href="http://lists.sourceforge.jp" rel="nofollow">lists.sourceforge.jp</a></li>
+<li><a href="http://kansai-ooo.sourceforge.jp/w/index.php/" rel="nofollow">勉強会サイト</a></li>
+</ul>
+  </div>
+  
+
+  
+
+  <h3 class="event_detail_title">
+    <span class="icon_gray_doc">資料</span>
+    
+      <span class="right"><a href="https://connpass.com/event/53960/presentation/" class="btn btn_default btn_size_small">資料をもっと見る／編集する</a></span>
+    
+  </h3>
+  <div class="group_inner event_doc_area clearfix">
+    
+    <div class="no_data_area"><p>資料が投稿されると、最新の3件が表示されます。</p></div>
+    
+  </div>
+</div>
+
+
+<div class="group_box" id="feed">
+  <h3 class="title">フィード</h3>
+  <div class="group_inner event_feed_area eventTabContent">
+
+    
+    <div class="feed_area clearfix">
+      
+        
+
+<div class="thumb36_list">
+  
+  <span class="thumbnail">
+    
+      <a class="image_link" href="https://connpass.com/user/enoki/">
+        
+          <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/f4/42/f442a9a1a3e81fb39993b1c3fc10d2cd.png" width="36" height="36" title="榎真治" alt="榎真治" />
+        
+      </a>
+    
+  </span>
+
+  <p class="message">
+
+  <a href="https://connpass.com/user/enoki/">榎真治</a> さんが <a href="https://connpass.com/event/53960/">第14回関西LibreOffice勉強会</a> を公開しました。
+  
+
+</p>
+  <p class="date">2017/04/12 21:25</p>
+  
+  
+  <p class="comment"><span class="icon_comment">第14回関西LibreOffice勉強会 を公開しました！</span></p>
+  
+
+</div>
+
+
+      
+    </div>
+
+
+    
+
+  </div>
+</div>
+
+
+
+      </div>
+    
+    
+    <div id="side_area">
+      
+
+
+<div class="group_box event_group_area">
+  <h3 class="title">
+    グループ
+
+    <div class="GroupMembership group_btn_area right">
+    
+      
+      <form action="https://connpass.com/login/" method="GET">
+        <input type="hidden" name="next" value="https://connpass.com/event/53960/?gmem=1" />
+          <button class="GroupMembershipButton btn btn_size_small btn_default" onClick="cet('Series', 'unwatch');" title="このグループのメンバーになるにはログインしてください">メンバーになる</button>
+      </form>
+      
+    
+    </div>
+
+  </h3>
+
+  <div class="group_inner">
+    <p class="group_title">
+      <a href="https://connpass.com/series/395/">関西LibreOffice勉強会</a>
+    </p>
+
+    
+    <div class="clearfix mt_5">
+      
+        <a href="https://connpass.com/series/395/" class="thumbnail image_bg" style="background-image: url(https://connpass-tokyo.s3.amazonaws.com/thumbs/fc/aa/fcaa43fd2f8b02ec68d49cc1d1dfb318.png);" title="関西LibreOffice勉強会"></a>
+      
+
+      <div class="group_date_area text_center">
+        <p>
+          イベント数
+          <a href="https://connpass.com/series/395/event/">21回</a>
+        </p>
+        <p>
+          メンバー数
+          <a href="https://connpass.com/series/395/participation/">94人</a>
+        </p>
+      </div>
+    </div>
+
+    
+
+  </div>
+</div>
+
+
+
+<div class="group_box">
+
+  <div class="group_inner event_schedule_area text_center">
+    <div class="clearfix">
+    <span class="label_status_event offer">開催前</span>
+
+      
+      
+        <span class="dtstart">
+          <span class="value-title" title="2017-04-29T04:00:00Z"></span>
+          <p class="ymd">2017/04/29(土)</p>
+          <span class="hi">13:00</span>
+        </span>
+      
+      
+      〜
+      
+      
+        <span class="dtend">
+          <span class="value-title" title="2017-04-29T08:30:00Z"></span>
+          
+            17:30
+          
+        </span>
+    
+    
+    </div>
+    <div class="calendar_btn_area EventBookmarkBox clearfix text_center">
+      
+      
+        <a href="http://www.google.com/calendar/event?action=TEMPLATE&text=%E7%AC%AC14%E5%9B%9E%E9%96%A2%E8%A5%BFLibreOffice%E5%8B%89%E5%BC%B7%E4%BC%9A&dates=20170429T040000Z/20170429T083000Z&details=https%3A//connpass.com/event/53960/&location=%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B7%80%E5%B7%9D%E5%8C%BA%E5%AE%AE%E5%8E%9F3-4-30%EF%BC%88%E3%83%8B%E3%83%83%E3%82%BB%E3%82%A4%E6%96%B0%E5%A4%A7%E9%98%AA%E3%83%93%E3%83%AB5%E9%9A%8E%EF%BC%89&trp=false&sprop=https%3A//connpass.com/event/53960/&sprop=name:connpass" target="_blank"><span class="icon_gcal_add">Googleカレンダー</span></a>
+        <a href="https://connpass.com/event/53960.ics"><span class="icon_ics_dl">icsファイル</span></a>
+      
+      
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+<div class="group_inner event_entry_area text_center is_entry">
+  
+  
+    
+
+
+
+
+
+
+
+
+  
+  
+
+    
+    
+      <form action="https://connpass.com/login/" method="GET">
+      
+      <input type="hidden" name="next" value="https://connpass.com/event/53960/join/" />
+        <p class="em mb_5">イベントに申し込むには<br />ログインしてください</p>
+        <button class="btn btn_high_priority btn_size_large btn_width_full" id="ParticipateButton" type="submit">ログイン・会員登録</button>
+      </form>
+    
+
+  
+
+
+  
+</div>
+
+
+
+
+
+  
+    <div class="group_inner event_entry_area">
+      <p class="text_center period">
+        募集期間<br />
+        2017/04/12(水) 21:24
+        〜<br />
+        
+          2017/04/29(土)
+        
+        17:30
+      </p>
+    </div>
+  
+
+
+  <div class="group_inner event_inquiry_area">
+    
+      <h3 class="sub_title"><a href="https://connpass.com/login/?next=https%3A//connpass.com/event/53960/inquiry/"><span class="icon_gray_mail">イベントへのお問い合わせ</span></a></h3>
+    
+  </div>
+
+  <div class="group_inner event_place_area">
+    <h3 class="sub_title"><span class="icon_gray_place">会場</span></h3>
+      
+        
+          <p class="place_name em"><a href="http://www.sei-info.co.jp/company/company_map.html" class="url fn org" target="_blank">住友電工情報システム（株）</a></p>
+        
+        
+        <p class="adr">
+          <span class="value-title" title="大阪市淀川区宮原3-4-30（ニッセイ新大阪ビル5階）"></span>
+          大阪市淀川区宮原3-4-30（ニッセイ新大阪ビル5階）
+        </p>
+        <span class="geo">
+          <span class="latitude"><span class="value-title" title="34.733766200000"></span></span>
+          <span class="longitude"><span class="value-title" title="135.496873600000"></span></span>
+        </span>
+        
+      
+
+    <div class="map_image mt_5">
+    
+      <a href="https://maps.google.co.jp/?q=%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B7%80%E5%B7%9D%E5%8C%BA%E5%AE%AE%E5%8E%9F3-4-30%EF%BC%88%E3%83%8B%E3%83%83%E3%82%BB%E3%82%A4%E6%96%B0%E5%A4%A7%E9%98%AA%E3%83%93%E3%83%AB5%E9%9A%8E%EF%BC%89&amp;zoom=17" target="_blank" class="image_link"><img src="https://maps.google.com/maps/api/staticmap?center=%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B7%80%E5%B7%9D%E5%8C%BA%E5%AE%AE%E5%8E%9F3-4-30%EF%BC%88%E3%83%8B%E3%83%83%E3%82%BB%E3%82%A4%E6%96%B0%E5%A4%A7%E9%98%AA%E3%83%93%E3%83%AB5%E9%9A%8E%EF%BC%89&amp;language=ja&amp;zoom=15&amp;markers=%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B7%80%E5%B7%9D%E5%8C%BA%E5%AE%AE%E5%8E%9F3-4-30%EF%BC%88%E3%83%8B%E3%83%83%E3%82%BB%E3%82%A4%E6%96%B0%E5%A4%A7%E9%98%AA%E3%83%93%E3%83%AB5%E9%9A%8E%EF%BC%89&amp;sensor=false&amp;size=238x238" title="住友電工情報システム（株）" width="238" height="238" alt="住友電工情報システム（株）" /></a>
+    
+    </div>
+
+  </div>
+</div>
+
+
+  
+
+<div class="side_sec_box side_ads_area">
+
+  
+  <a href="https://pyq.jp?utm_campaign=release&utm_source=connpass&utm_medium=banner&utm_content=connpass_eventd_rside" target="_blank"><img src="https://connpass.com/static/img/ads/all/banner_event_250_250.png" width="250" height="250"></a>
+  
+
+</div>
+
+
+
+
+<div class="group_box">
+  <h3 class="title">管理者</h3>
+  <div class="group_inner event_owner_area">
+    <ul class="owner_list clearfix">
+      
+      
+      <li>
+        <a class="image_link" href="https://connpass.com/user/enoki/open/" title="榎真治"><img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/0c/e9/0ce964a2a01ec63b85c09d833cdea28d.png" width="23" height="23" title="榎真治" alt="榎真治" />榎真治</a>
+      </li>
+      
+      <li>
+        <a class="image_link" href="https://connpass.com/user/my_pp/open/" title="my_pp"><img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/67/fe/67fe67fe0c802034768d88df396e57be.png" width="23" height="23" title="my_pp" alt="my_pp" />my_pp</a>
+      </li>
+      
+      <li>
+        <a class="image_link" href="https://connpass.com/user/78tch/open/" title="78tch"><img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/94/6e/946ea4b952b2f9fcd8f498f59e6a537c.png" width="23" height="23" title="78tch" alt="78tch" />78tch</a>
+      </li>
+      
+      <li>
+        <a class="image_link" href="https://connpass.com/user/SyuOHGAMA/open/" title="SyuOHGAMA"><img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/91/5a/915aa9f5f6f58eea5ed8cf88fc616a1d.png" width="23" height="23" title="SyuOHGAMA" alt="SyuOHGAMA" />SyuOHGAMA</a>
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<div class="group_box participants_area">
+  
+    <h4 class="event_detail_title corner_top_6">
+      
+        <a href="https://connpass.com/event/53960/participation/#participants">参加者（16人）</a>
+      
+    </h4>
+    <div class="group_inner event_p_area">
+
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/enoki/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/0c/e9/0ce964a2a01ec63b85c09d833cdea28d.png" alt="榎真治" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/enoki/">榎真治</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会 に参加を申し込みました！</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/sky_y/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/fd/b4/fdb4f9f9c1fe736caccbc43ab10c9b9f.png" alt="すかいゆき / 藤原惟" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/sky_y/">すかいゆき / 藤原惟</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会に参加を申し込みました！</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/JO3EMC/">
+          
+            <img src="https://connpass.com/static/img/common/user_no_image.gif" width="23" height="23" alt="JO3EMC" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/JO3EMC/">JO3EMC</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会 に参加を申し込みました！</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/try_ymk/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/56/fb/56fb40384f3f4e1b911e285fc0c190d9.png" alt="とらいゆめき" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/try_ymk/">とらいゆめき</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会 に参加を申し込みました！</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/nogajun/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/73/f5/73f5a831b8e7aafef0d691b84733b047.png" alt="nogajun" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/nogajun/">nogajun</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会 に参加を申し込みました！</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/SyuOHGAMA/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/91/5a/915aa9f5f6f58eea5ed8cf88fc616a1d.png" alt="SyuOHGAMA" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/SyuOHGAMA/">SyuOHGAMA</a>
+      
+      </p>
+      
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/YujiHorimoto/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/ac/d3/acd3ecc79d139dd6329dba9d47cd0096.png" alt="YujiHorimoto" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/YujiHorimoto/">YujiHorimoto</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会 に参加を申し込みました！初めてです、よろしくお願いします。</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/hibagonsan/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/24/4b/244be6493467ee1b8d5852c347f0ef8f.png" alt="hibagonsan" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/hibagonsan/">hibagonsan</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会 に参加を申し込みました！</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/znz/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/98/54/9854de98b167e05127b85d24e334b583.png" alt="znz" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/znz/">znz</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会に参加を申し込みました！</p>
+    </div>
+    
+    <div class="thumb25_list">
+      
+        <a class="thumbnail image_link" href="https://connpass.com/user/mahbo/">
+          
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/fd/f7/fdf79b0487b7d64957cb3d3e53898864.png" alt="mahbo" width="23" height="23" />
+          
+        </a>
+      
+      <p class="name">
+      
+        <a href="https://connpass.com/user/mahbo/">mahbo</a>
+      
+      </p>
+      <p class="comment">第14回関西LibreOffice勉強会 に参加を申し込みました！</p>
+    </div>
+    
+    <p class="p text_right">
+      
+        <a href="https://connpass.com/event/53960/participation/#participants"><span class="icon_red_four_right"></span>参加者一覧（16人）</a>
+      
+    </p>
+  </div>
+  
+
+
+  
+
+  
+    <h4 class="event_detail_title">
+      
+        <a href="https://connpass.com/event/53960/participation/#cancelled">キャンセルした人（1人）</a>
+      
+    </h4>
+    <div class="group_inner event_p_area">
+    <ul class="clearfix thumb24_block">
+      
+      <li>
+        
+          <a class="image_link" href="https://connpass.com/user/HidekazuTanaka/">
+            
+              <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/d9/c1/d9c1cb8b45479607d4660ecdef1961a8.png" alt="HidekazuTanaka" width="24" height="24">
+            </a>
+        
+      </li>
+      
+    </ul>
+    
+  </div>
+  
+</div>
+
+
+  
+
+
+<div class="side_sec_box side_ads_area">
+
+  <script src="https://supporterzcolab.com/static/js/widget/widget.js" id="widget-engetsu"></script>
+
+</div>
+
+
+
+
+<div id="CurrentEventObj" style="display:none;"></div>
+
+
+    </div>
+    
+  </div>
+  
+</div>
+
+
+
+
+  <div id="footer">
+    <div class="footer_link_area clearfix">
+      <div class="layout_column_4 footer_site">
+        <div class="mb_5"><a href="https://connpass.com/" title="サイトのトップページへ"><img src="https://connpass.com/static/img/common/sitelogo_295x100.png" alt="connpass" class="connpass">エンジニアをつなぐ<br>IT勉強会支援プラットフォーム</a></div>
+        <div class="mb_5">
+        
+        <a href="https://itunes.apple.com/jp/app/connpass/id723317753?mt=8&uo=4" target="_blank" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/htmlResources/assets/ja_jp//images/web/linkmaker/badge_appstore-lrg.png) no-repeat;width:135px;height:40px;@media only screen{background-image:url(https://linkmaker.itunes.apple.com/htmlResources/assets/ja_jp//images/web/linkmaker/badge_appstore-lrg.svg);}" onClick="cet('Marketing', 'iphone_app_banner', 'footer_banner', undefined, true);"></a>
+        
+        </div>
+        <a href="http://twitter.com/connpass_jp" target="_blank" class="mr_5"><img src="https://connpass.com/static/img/common/icon_twitter_official.png" alt="Twitter公式アカウント"></a>
+        <a href="http://www.facebook.com/connpass" target="_blank"><img src="https://connpass.com/static/img/common/icon_facebook_official.png" alt="Facebookページ"></a>
+
+      </div>
+      <div class="layout_column_4 footer_help">
+        <ul class="cmn_list">
+          <li><a href="http://help.connpass.com/" target="_blank" title="connpassのヘルプ">ご利用ガイド</a></li>
+          <li><a href="http://help.connpass.com/faq/" target="_blank">よくある質問</a></li>
+          
+          <li><a href="https://connpass.com/term/">利用規約</a></li>
+          <li><a href="https://connpass.com/about/api/">API</a></li>
+          <li><a href="https://connpass.com/law/">特定商取引法に基づく表示</a></li>
+          <li><a href="https://connpass.com/privacy/">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+      <div class="layout_column_4 footer_sns">
+      <ul class="cmn_list">
+        <li class="li_icon_hint"><a href="https://connpass.com/about/" title="connpassの機能をタイムライン風に紹介">機能紹介</a></li>
+        <li class="li_icon_hint"><a href="https://connpass.com/about/comparison/" title="connpassと他イベントサイトとの機能比較">他サービスとの比較</a></li>
+        <li class="li_icon"><a href="https://connpass.com/explore/">新着イベント</a></li>
+        <li class="li_icon_feed"><a href="https://connpass.com/explore/ja.atom" target="_blank">新着イベントfeed</a></li>
+        <li class="li_icon_connpass"><a href="http://blog.connpass.com/" target="_blank">公式ブログ</a></li>
+
+      </ul>
+      </div>
+      <div class="layout_column_4 footer_feedback">
+      
+
+<div class="event_feedback_area">
+  
+    
+    
+    <p>イベントへの問い合わせは<a href="https://connpass.com/login/?next=https%3A//connpass.com/event/53960/inquiry/">こちら</a>をご利用ください</p>
+  
+</div>
+
+
+      </div>
+    </div>
+    <div class="footer_link_area clearfix">
+      <div class="footer_beproud"><a href="http://www.beproud.jp/company/" target="_blank"><img src="https://connpass.com/static/img/common/logo_beproud.png" alt="BePROUD" title="BePROUD" />connpass は株式会社ビープラウドが開発・運営しています</a></div>
+      <address>&copy; 2017 BeProud, Inc. All Rights Reserved.</address>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+<script id="EventCreateTemplate" type="text/html">
+  <div class="popup">
+    <div class="popup_wrapper">
+      <div class="popup_header">
+        <h2 class="popup_title">イベントを作成する</h2>
+        <span class="close_btn_area">
+          <span class="btn btn_default btn_size_small corner_none modal-close" title="閉じる"><span class="icon_black_close"></span></span>
+        </span>
+      </div>
+      <div class="popup_contents text_center">
+        <p class="font_16 mb_10"><strong>イベント名を入力してください</strong></p>
+        <input name="title" type="text" class="form_input_text form_width_450 font_18">
+
+        <div class="mt_10 mb_30">
+          <button type="submit" class="EventCreateSubmit btn btn_action btn_size_large" onClick="cet('Create', 'create_event');">イベントを作成</button>
+        </div>
+        <div class="right">
+          <a href="https://connpass.com/group/new/"><span class="icon_red_four_right"></span>グループを作成</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="MessageTemplate" type="text/html">
+  <p class="message <%= level %>"><%- message %></p>
+</script>
+
+
+<div id="fb-root"></div>
+
+
+
+
+
+
+<div id="CurrentUserObj" style="display:none;" ></div>
+<div id="CSRFToken" style="display:none;" data-csrftoken="LWoCOj1qsbUCUBI8KUM5eEbkc7vV8mVo"></div>
+
+<script type="text/javascript" src="https://connpass.com/static/js/require.js?20170427112417
+"></script>
+<script type="text/javascript" src="https://connpass.com/static/js/connpass.min.js?20170427112417
+"></script>
+<script type="text/javascript">
+require.config({
+  
+  baseUrl: 'https://connpass.com/static/js/',
+  locale: 'ja',
+  
+  onError: function(e) { _ravenQueue.push(e); },
+  config: {
+    'csrf': {
+      CSRF_COOKIE_NAME: 'connpass-csrftoken'
+    },
+    'sanca': {
+      
+      LOG_LEVEL: "WARNING",
+      HTTP_HOST: 'connpass.com',
+      STATIC_URL: 'https://connpass.com/static/',
+      MEDIA_URL: 'https://connpass.com/media/',
+      API_BASE_URL: 'https://connpass.com/api'
+    }
+  }
+});
+</script>
+
+<script type="text/javascript">
+require(['raven'], function(Raven) {
+  
+  var httpHostRegex = new RegExp('\/\/([a-z0-9]+\.)?' + 'connpass.com'.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&") + "\/", 'i');
+  var ignoreErrors = new RegExp("^Script error$|^Script error\\.$", 'i');
+
+  
+  Raven.TraceKit.remoteFetching = false;
+
+  
+  Raven.config('https://3fea03183f7a48ca8f1db8c787c6cd23@app.getsentry.com/83578', {
+    whitelistUrls: [httpHostRegex],
+    ignoreErrors: [ignoreErrors],
+    ignoreUrls: [
+        // Facebook
+        /graph\.facebook\.com/i,
+        /connect\.facebook\.net\/.+\/sdk\.js/i,
+        // Twitter
+        /platform\.twitter\.com\/widgets\.js/i,
+        // Chrome extensions
+        /extensions\//i,
+        /^chrome:\/\//i
+    ],
+    fetchContext: false 
+  }).install();
+  
+  
+  require.config({onError: Raven.captureException});
+
+  
+  for (var i = 0; i < _ravenQueue.length; i+=1) {
+    if (_ravenQueue[i] instanceof Error) {
+      Raven.captureException(_ravenQueue[i]);
+    } else {
+      
+      var msg = _ravenQueue[i].message;
+      var fileurl = _ravenQueue[i].culprit;
+      if (!ignoreErrors.test(msg) && httpHostRegex.test(fileurl)) {
+        Raven.captureMessage(msg, {culprit: fileurl});
+      }
+    }
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+  require([
+    'jquery', 'jquerytools/tooltip.dynamic',
+    'jquerytools/tooltip.slide', 'design'
+  ], function($, Views) {
+    $(function() {
+      $('.Help').tooltip({
+        effect: 'slide',
+        position: 'bottom center',
+        offset: [20, 0],
+      }).dynamic({
+        bottom: {
+          direction: 'down',
+          bounce: true
+        }
+      });
+    });
+  });
+
+  require(['jquery', 'cs!sanca/views/personal_menu'], function($, Views) {
+    var personal_menu = new Views.PersonalMenu({
+      el: '#header',
+      dropdown_el: '#personalMenu'
+    });
+  });
+
+  require(['jquery', 'cs!sanca/views/feedback'], function($, Views) {
+    var feedbackform = new Views.FeedbackView({
+      el: '#FeedbackForm'
+    });
+  });
+
+</script>
+<script type="text/javascript">
+  window.fbAsyncInit = function() {
+    FB.init({
+      version: 'v2.8',
+      status: true,
+      appId: '259235460759625',
+      xfbml: true  // Like btn
+    });
+    FB.Event.subscribe('edge.create', function(targetUrl) {
+      typeof cst === "function" && cst('facebook', 'like', targetUrl);
+    });
+    FB.Event.subscribe('edge.remove', function(targetUrl) {
+      typeof cst === "function" && cst('facebook', 'unlike', targetUrl);
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/ja_JP/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type="text/javascript">
+require([
+    'jquery', 'underscore', 'cs!sanca/models/event', 'cs!sanca/views/event_detail', 'cs!sanca/models/group',
+], function($, _, Models, Views) {
+  $(function() {
+    var detail_view = new Views.EventDetailView({
+      
+      el: '#event_detail',
+      model: new Models.Event({"event_type": "participation", "cancelled_count": 1, "series": 395, "image": "https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/5a/d75af4b4c91057b15bafd75f51287f05.png", "lottery_publish_notification_sent": false, "lottery_publish_date": null, "open_end_datetime": null, "paypal_email": "", "id": 53960, "issue_ticket": false, "title": "\u7b2c14\u56de\u95a2\u897fLibreOffice\u52c9\u5f37\u4f1a", "presenter_title": "", "sub_title": "", "cancel_policy": "", "waitlist_count": 0, "publish_datetime": "2017-04-12T21:24:46", "status": "live", "start_datetime": "2017-04-29T13:00:00", "contact_details": "", "description": "\u003ch1\u003e\u95a2\u897fLibreOffice\u52c9\u5f37\u4f1a\u3068\u306f\u003c/h1\u003e\n\u003cp\u003e\u95a2\u897f\u5728\u4f4f\u306eLibreOffice\u30e6\u30fc\u30b6\u30fc\u304c\u96c6\u307e\u308a\u3001\u30e6\u30fc\u30b6\u30fc\u540c\u58eb\u3067\u306e\u4ea4\u6d41\u3084\u30ce\u30a6\u30cf\u30a6\u5171\u6709\u3092\u76ee\u7684\u3068\u3057\u3066\u3001\u52c9\u5f37\u4f1a\u3092\u958b\u50ac\u3057\u3066\u3044\u307e\u3059\u3002\nLibreOffice\u3092\u4f7f\u3063\u3066\u3044\u308b\u65b9\u3001\u3053\u308c\u304b\u3089\u4f7f\u304a\u3046\u3068\u601d\u3063\u3066\u3044\u308b\u65b9\u3001\u8208\u5473\u3092\u304a\u6301\u3061\u306e\u65b9\u3001\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u3067\u6d3b\u52d5\u3055\u308c\u3066\u3044\u308b\u65b9\u3001\u3061\u3087\u3063\u3068\u53c2\u52a0\u3057\u3066\u307f\u3088\u3046\u3068\u601d\u308f\u308c\u305f\u306f\u3001\u596e\u3063\u3066\u3054\u53c2\u52a0\u304f\u3060\u3055\u3044\u3002\u003c/p\u003e\n\u003ch1\u003e\u30a4\u30d9\u30f3\u30c8\u6982\u8981\u003c/h1\u003e\n\u003cul\u003e\n\u003cli\u003e\u65e5\u6642\uff1a2017\u5e744\u670829\u65e5(\u571f) 13:00\uff5e17:30\u003c/li\u003e\n\u003cli\u003e\u5834\u6240\uff1a\u4f4f\u53cb\u96fb\u5de5\u60c5\u5831\u30b7\u30b9\u30c6\u30e0\uff08\u682a\uff09\u003cbr\u003e\n   \u5927\u962a\u5e02\u6dc0\u5ddd\u533a\u5bae\u539f3-4-30\uff08\u30cb\u30c3\u30bb\u30a4\u65b0\u5927\u962a\u30d3\u30eb5\u968e\uff09\u30bb\u30df\u30ca\u30fc\u30eb\u30fc\u30e0\u003cbr\u003e\n   \u003ca href=\"http://www.sei-info.co.jp/company/company_map.html\" rel=\"nofollow\"\u003ehttp://www.sei-info.co.jp/company/company_map.html\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u53c2\u52a0\u8cbb\uff1a\u7121\u6599\u003c/li\u003e\n\u003cli\u003e\u4e3b\u50ac\uff1a\u95a2\u897fLibreOffice\u52c9\u5f37\u4f1a\u5b9f\u884c\u59d4\u54e1\u4f1a\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch1\u003e\u30a2\u30b8\u30a7\u30f3\u30c0\u003c/h1\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth align=\"left\"\u003e\u6642\u9593\u003c/th\u003e\n\u003cth align=\"left\"\u003e\u5185\u5bb9\u003c/th\u003e\n\u003cth\u003e\u767a\u8868\u8005\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e12:45\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u53d7\u4ed8\u958b\u59cb\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e13:00-13:05\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u524d\u8aac\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e13:05-13:20\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u53c2\u52a0\u8005\u81ea\u5df1\u7d39\u4ecb\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e13:20-14:20\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u66f8\u5f0f\u306e\u81ea\u7531\u304c\u793e\u4f1a\u3092\u5909\u3048\u308b\u2015LibreOffice\u3068Pandoc\u304c\u3067\u304d\u308b\u3053\u3068\u003c/td\u003e\n\u003ctd\u003e\u85e4\u539f \u7531\u6765\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e14:20-14:35\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u4f11\u61a9\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e14:35-15:05\u003c/td\u003e\n\u003ctd align=\"left\"\u003eOffice\u6587\u66f8\u3092\u624b\u6253\u3061\u30cf\u30c3\u30af\u3059\u308b \uff5eFlatODF\u6d3b\u7528\u306e\u3059\u3059\u3081\uff5e\u003c/td\u003e\n\u003ctd\u003e\u5ca9\u6a4b \u4f34\u5178\uff08\u3044\u3055\u306a\uff09\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e15:05-15:15\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u4f11\u61a9\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e15:15-15:35\u003c/td\u003e\n\u003ctd align=\"left\"\u003eLibreOffice Online\u74b0\u5883\u306e\u69cb\u7bc9\u003c/td\u003e\n\u003ctd\u003e\u5185\u85e4\u3000\u4f51\u592a\u6717\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e15:35-15:50\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u4f11\u61a9\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e15:50-16:20\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u767a\u8868\u67a04\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e16:20-16:35\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u4f11\u61a9\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e16:35-17:10\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u30c7\u30a3\u30b9\u30ab\u30c3\u30b7\u30e7\u30f3\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align=\"left\"\u003e17:10-17:20\u003c/td\u003e\n\u003ctd align=\"left\"\u003e\u632f\u308a\u8fd4\u308a\u3001\u30af\u30ed\u30fc\u30b8\u30f3\u30b0\u003c/td\u003e\n\u003ctd\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch1\u003e\u5185\u5bb9\u8a73\u7d30\u003c/h1\u003e\n\u003ch3\u003e\u66f8\u5f0f\u306e\u81ea\u7531\u304c\u793e\u4f1a\u3092\u5909\u3048\u308b\u2015LibreOffice\u3068Pandoc\u304c\u3067\u304d\u308b\u3053\u3068(60\u5206) \u85e4\u539f \u7531\u6765\u003c/h3\u003e\n\u003cp\u003eOSS\u306e\u6587\u66f8\u5909\u63db\u30c4\u30fc\u30ebPandoc\u3092\u4f7f\u3046\u3068\u3001Markdown/LaTeX/HTML\u306a\u3069\u304b\u3089LibreOffice Writer\u6587\u66f8\u306b\u5909\u63db\u3057\u305f\u308a\u3001\u305d\u306e\u9006\u304c\u3067\u304d\u307e\u3059\u3002\u3053\u306e\u767a\u8868\u3067\u306fPandoc\u306b\u3064\u3044\u3066\u3001\u7279\u306bLibreOffice Writer\u6587\u66f8\u3092\u5165\u529b\u30fb\u51fa\u529b\u6587\u66f8\u3068\u3057\u305f\u5834\u5408\u3092\u91cd\u70b9\u7684\u306b\u8aac\u660e\u3057\u307e\u3059\u3002\u305d\u306e\u4e0a\u3067\u3001Pandoc\u304c\u793a\u5506\u3059\u308b\u300c\u66f8\u5f0f\u306e\u81ea\u7531\u300d\u3068\u3044\u3046\u6982\u5ff5\u3092\u3001LibreOffice\u306e\u7406\u5ff5\u3067\u3042\u308b\u300c\u81ea\u7531\u300d\u3092\u53c2\u7167\u3057\u3064\u3064\u8a71\u3057\u3066\u307f\u307e\u3059\u3002\u003c/p\u003e\n\u003ch3\u003eOffice\u6587\u66f8\u3092\u624b\u6253\u3061\u30cf\u30c3\u30af\u3059\u308b \uff5eFlatODF\u6d3b\u7528\u306e\u3059\u3059\u3081\uff5e (30\u5206) \u5ca9\u6a4b \u4f34\u5178\uff08\u3044\u3055\u306a\uff09\u003c/h3\u003e\n\u003cp\u003eOpenDocument Format\u306e\u30d7\u30ec\u30fc\u30f3\u30c6\u30ad\u30b9\u30c8\u7248\u300cFlatODF\u300d\u6587\u66f8\u3092\u30c6\u30ad\u30b9\u30c8\u30a8\u30c7\u30a3\u30bf\u30fc\u3067\u30cf\u30c3\u30af\u3057\u3066\u307f\u307e\u305b\u3093\u304b\u3002\nFlatODF\u306a\u3089\u3001\u30ef\u30fc\u30d7\u30ed\u6587\u66f8\u3082\u3001\u8868\u8a08\u7b97\u30b7\u30fc\u30c8\u3082\u3001\u305d\u3057\u3066\u7cbe\u5ea6\u3042\u308b\u56f3\u9762\u3060\u3063\u3066\uff01\u30c6\u30ad\u30b9\u30c8\u30a8\u30c7\u30a3\u30bf\u30fc\u3067\u601d\u3044\u306e\u307e\u307e\u306b\u4f5c\u308a\u8fbc\u3081\u3066\u3057\u307e\u3044\u307e\u3059\u3002\u3082\u3061\u308d\u3093\u30d7\u30ec\u30fc\u30f3\u30c6\u30ad\u30b9\u30c8\u306a\u306e\u3067\u3001\u7de8\u96c6\u30c4\u30fc\u30eb\u306f\u30c6\u30ad\u30b9\u30c8\u51fa\u529b\u3055\u3048\u51fa\u6765\u308c\u3070\u4f55\u3067\u3082OK\u3002\u96e3\u3057\u3044\u30e9\u30a4\u30d6\u30e9\u30ea\u3084\u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30a4\u30b9\u5229\u7528\u306e\u30ce\u30a6\u30cf\u30a6\u4e0d\u8981\u3067\u3001\u7c21\u5358\u306b\u5e33\u7968\u3084\u30ec\u30dd\u30fc\u30c8\u304c\u4f5c\u308c\u3066\u3057\u307e\u3044\u307e\u3059\u3002\u66f4\u306bLibreOffice\u304c\u3042\u308c\u3070\u3001\u30b3\u30de\u30f3\u30c9\u30e9\u30a4\u30f3\u4e00\u767a\u3067\u4f5c\u3063\u305f\u6587\u66f8\u306ePDF\u5316\u3060\u3063\u3066\u3067\u304d\u3061\u3083\u3044\u307e\u3059\u3002Web\u306e\u30d0\u30c3\u30af\u30a8\u30f3\u30c9\u306b\u4ed5\u8fbc\u3080\u306e\u3060\u3063\u3066\u7c21\u5358\u3067\u3059\u3002\u7d20\u4eba\u306b\u3082\u6271\u3044\u3084\u3059\u3044FlatODF\u3067\u3001\u3044\u308d\u3093\u306a\u6587\u66f8\u3092\u81ea\u52d5\u751f\u6210\u3057\u3061\u3083\u3044\u307e\u3057\u3087\u3046\u3002\u003c/p\u003e\n\u003ch3\u003eLibreOffice Online\u74b0\u5883\u306e\u69cb\u7bc9\uff0820\u5206\uff09\u5185\u85e4\u4f51\u592a\u6717\u003c/h3\u003e\n\u003cp\u003e\u6240\u5c5e\uff1a\u30a2\u30a4\u30af\u30e9\u30d5\u30c8\u682a\u5f0f\u4f1a\u793e\u003cbr\u003e\nLibreOffice Online\u306fWeb\u30d6\u30e9\u30a6\u30b6\u4e0a\u3067LibreOffice\u30d5\u30a1\u30a4\u30eb\u3092\u8868\u793a\u30fb\u7de8\u96c6\u53ef\u80fd\u306a\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3067\u3059\u3002\u672a\u3060\u958b\u767a\u6bb5\u968e\u3067\u306f\u3042\u308a\u307e\u3059\u304c\u3001\u65e5\u672c\u8a9e\u30d5\u30a1\u30a4\u30eb\u306e\u8868\u793a\u3082\u53ef\u80fd\u306a\u305f\u3081\u3001\u3042\u308b\u7a0b\u5ea6\u307e\u3067\u5b9f\u7528\u306b\u8010\u3048\u3046\u308b\u72b6\u6cc1\u306b\u3042\u308a\u307e\u3059\u3002\u4eca\u56de\u306f\u305d\u3093\u306a \nLibreOffice Online\u74b0\u5883\u306e\u69cb\u7bc9\u306b\u3064\u3044\u3066\u304a\u8a71\u3057\u307e\u3059\u3002\u003c/p\u003e\n\u003ch1\u003e\u61c7\u89aa\u4f1a\u003c/h1\u003e\n\u003cp\u003e\u8fd1\u304f\u306e\u304a\u5e97\u3067\u61c7\u89aa\u4f1a\u3092\u884c\u3046\u4e88\u5b9a\u3067\u3059\u3002\u53c2\u52a0\u78ba\u8a8d\u306f\u5f53\u65e5\u884c\u3044\u307e\u3059\u3002\u3053\u3061\u3089\u3082\u3054\u53c2\u52a0\u304f\u3060\u3055\u3044\u3002\u003c/p\u003e\n\u003ch1\u003e\u554f\u3044\u5408\u308f\u305b\u5148\u003c/h1\u003e\n\u003cul\u003e\n\u003cli\u003ekansai-ooo-staff at \u003ca href=\"http://lists.sourceforge.jp\" rel=\"nofollow\"\u003elists.sourceforge.jp\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"http://kansai-ooo.sourceforge.jp/w/index.php/\" rel=\"nofollow\"\u003e\u52c9\u5f37\u4f1a\u30b5\u30a4\u30c8\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e", "public_url": "https://connpass.com/event/53960/", "participants_count": 16, "hashtag": "LibOKansai", "open_start_datetime": null, "participation_types": [{"total_participants_count": 16, "place_fee": null, "cancelled_count": 1, "lottery_count": 0, "method": "fcfs", "participants_count": 16, "join_fee": null, "max_participants": 24, "waitlist_count": 0, "id": 68859, "name": "\u53c2\u52a0\u67a0"}], "owner_text": "\u95a2\u897fLibreOffice\u52c9\u5f37\u4f1a\u5b9f\u884c\u59d4\u54e1\u4f1a", "place": {"name": "\u4f4f\u53cb\u96fb\u5de5\u60c5\u5831\u30b7\u30b9\u30c6\u30e0\uff08\u682a\uff09", "url": "http://www.sei-info.co.jp/company/company_map.html", "address": "\u5927\u962a\u5e02\u6dc0\u5ddd\u533a\u5bae\u539f3-4-30\uff08\u30cb\u30c3\u30bb\u30a4\u65b0\u5927\u962a\u30d3\u30eb5\u968e\uff09", "lat": "34.733766200000", "map_image": "https://maps.google.com/maps/api/staticmap?center=%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B7%80%E5%B7%9D%E5%8C%BA%E5%AE%AE%E5%8E%9F3-4-30%EF%BC%88%E3%83%8B%E3%83%83%E3%82%BB%E3%82%A4%E6%96%B0%E5%A4%A7%E9%98%AA%E3%83%93%E3%83%AB5%E9%9A%8E%EF%BC%89\u0026language=ja\u0026zoom=15\u0026markers=%E5%A4%A7%E9%98%AA%E5%B8%82%E6%B7%80%E5%B7%9D%E5%8C%BA%E5%AE%AE%E5%8E%9F3-4-30%EF%BC%88%E3%83%8B%E3%83%83%E3%82%BB%E3%82%A4%E6%96%B0%E5%A4%A7%E9%98%AA%E3%83%93%E3%83%AB5%E9%9A%8E%EF%BC%89\u0026sensor=false\u0026size=225x225", "lng": "135.496873600000", "id": 6272}, "end_datetime": "2017-04-29T17:30:00", "max_num": 24, "description_input": "# \u95a2\u897fLibreOffice\u52c9\u5f37\u4f1a\u3068\u306f\n\n\u95a2\u897f\u5728\u4f4f\u306eLibreOffice\u30e6\u30fc\u30b6\u30fc\u304c\u96c6\u307e\u308a\u3001\u30e6\u30fc\u30b6\u30fc\u540c\u58eb\u3067\u306e\u4ea4\u6d41\u3084\u30ce\u30a6\u30cf\u30a6\u5171\u6709\u3092\u76ee\u7684\u3068\u3057\u3066\u3001\u52c9\u5f37\u4f1a\u3092\u958b\u50ac\u3057\u3066\u3044\u307e\u3059\u3002\nLibreOffice\u3092\u4f7f\u3063\u3066\u3044\u308b\u65b9\u3001\u3053\u308c\u304b\u3089\u4f7f\u304a\u3046\u3068\u601d\u3063\u3066\u3044\u308b\u65b9\u3001\u8208\u5473\u3092\u304a\u6301\u3061\u306e\u65b9\u3001\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u3067\u6d3b\u52d5\u3055\u308c\u3066\u3044\u308b\u65b9\u3001\u3061\u3087\u3063\u3068\u53c2\u52a0\u3057\u3066\u307f\u3088\u3046\u3068\u601d\u308f\u308c\u305f\u306f\u3001\u596e\u3063\u3066\u3054\u53c2\u52a0\u304f\u3060\u3055\u3044\u3002\n\n# \u30a4\u30d9\u30f3\u30c8\u6982\u8981\n\n* \u65e5\u6642\uff1a2017\u5e744\u670829\u65e5(\u571f) 13:00\uff5e17:30\n* \u5834\u6240\uff1a\u4f4f\u53cb\u96fb\u5de5\u60c5\u5831\u30b7\u30b9\u30c6\u30e0\uff08\u682a\uff09\u003cbr /\u003e\n   \u5927\u962a\u5e02\u6dc0\u5ddd\u533a\u5bae\u539f3-4-30\uff08\u30cb\u30c3\u30bb\u30a4\u65b0\u5927\u962a\u30d3\u30eb5\u968e\uff09\u30bb\u30df\u30ca\u30fc\u30eb\u30fc\u30e0\u003cbr /\u003e\n   http://www.sei-info.co.jp/company/company_map.html\n* \u53c2\u52a0\u8cbb\uff1a\u7121\u6599\n* \u4e3b\u50ac\uff1a\u95a2\u897fLibreOffice\u52c9\u5f37\u4f1a\u5b9f\u884c\u59d4\u54e1\u4f1a\n\n# \u30a2\u30b8\u30a7\u30f3\u30c0\n\n| \u6642\u9593 | \u5185\u5bb9 | \u767a\u8868\u8005 |\n|:------------|:--------------| :------------|\n|12:45 |\u53d7\u4ed8\u958b\u59cb | |\n|13:00-13:05 |\u524d\u8aac | |\n|13:05-13:20 |\u53c2\u52a0\u8005\u81ea\u5df1\u7d39\u4ecb| |\n|13:20-14:20 |\u66f8\u5f0f\u306e\u81ea\u7531\u304c\u793e\u4f1a\u3092\u5909\u3048\u308b\u2015LibreOffice\u3068Pandoc\u304c\u3067\u304d\u308b\u3053\u3068|\u85e4\u539f \u7531\u6765 |\n|14:20-14:35 |\u4f11\u61a9 ||\n|14:35-15:05 |Office\u6587\u66f8\u3092\u624b\u6253\u3061\u30cf\u30c3\u30af\u3059\u308b \uff5eFlatODF\u6d3b\u7528\u306e\u3059\u3059\u3081\uff5e|\u5ca9\u6a4b \u4f34\u5178\uff08\u3044\u3055\u306a\uff09 |\n|15:05-15:15 |\u4f11\u61a9 ||\n|15:15-15:35 |LibreOffice Online\u74b0\u5883\u306e\u69cb\u7bc9 |\u5185\u85e4\u3000\u4f51\u592a\u6717|\n|15:35-15:50 |\u4f11\u61a9 ||\n|15:50-16:20 |\u767a\u8868\u67a04 ||\n|16:20-16:35 |\u4f11\u61a9 ||\n|16:35-17:10 |\u30c7\u30a3\u30b9\u30ab\u30c3\u30b7\u30e7\u30f3 ||\n|17:10-17:20 |\u632f\u308a\u8fd4\u308a\u3001\u30af\u30ed\u30fc\u30b8\u30f3\u30b0 ||\n\n# \u5185\u5bb9\u8a73\u7d30\n\n### \u66f8\u5f0f\u306e\u81ea\u7531\u304c\u793e\u4f1a\u3092\u5909\u3048\u308b\u2015LibreOffice\u3068Pandoc\u304c\u3067\u304d\u308b\u3053\u3068(60\u5206) \u85e4\u539f \u7531\u6765\nOSS\u306e\u6587\u66f8\u5909\u63db\u30c4\u30fc\u30ebPandoc\u3092\u4f7f\u3046\u3068\u3001Markdown/LaTeX/HTML\u306a\u3069\u304b\u3089LibreOffice Writer\u6587\u66f8\u306b\u5909\u63db\u3057\u305f\u308a\u3001\u305d\u306e\u9006\u304c\u3067\u304d\u307e\u3059\u3002\u3053\u306e\u767a\u8868\u3067\u306fPandoc\u306b\u3064\u3044\u3066\u3001\u7279\u306bLibreOffice Writer\u6587\u66f8\u3092\u5165\u529b\u30fb\u51fa\u529b\u6587\u66f8\u3068\u3057\u305f\u5834\u5408\u3092\u91cd\u70b9\u7684\u306b\u8aac\u660e\u3057\u307e\u3059\u3002\u305d\u306e\u4e0a\u3067\u3001Pandoc\u304c\u793a\u5506\u3059\u308b\u300c\u66f8\u5f0f\u306e\u81ea\u7531\u300d\u3068\u3044\u3046\u6982\u5ff5\u3092\u3001LibreOffice\u306e\u7406\u5ff5\u3067\u3042\u308b\u300c\u81ea\u7531\u300d\u3092\u53c2\u7167\u3057\u3064\u3064\u8a71\u3057\u3066\u307f\u307e\u3059\u3002\n\n### Office\u6587\u66f8\u3092\u624b\u6253\u3061\u30cf\u30c3\u30af\u3059\u308b \uff5eFlatODF\u6d3b\u7528\u306e\u3059\u3059\u3081\uff5e (30\u5206) \u5ca9\u6a4b \u4f34\u5178\uff08\u3044\u3055\u306a\uff09\nOpenDocument Format\u306e\u30d7\u30ec\u30fc\u30f3\u30c6\u30ad\u30b9\u30c8\u7248\u300cFlatODF\u300d\u6587\u66f8\u3092\u30c6\u30ad\u30b9\u30c8\u30a8\u30c7\u30a3\u30bf\u30fc\u3067\u30cf\u30c3\u30af\u3057\u3066\u307f\u307e\u305b\u3093\u304b\u3002\nFlatODF\u306a\u3089\u3001\u30ef\u30fc\u30d7\u30ed\u6587\u66f8\u3082\u3001\u8868\u8a08\u7b97\u30b7\u30fc\u30c8\u3082\u3001\u305d\u3057\u3066\u7cbe\u5ea6\u3042\u308b\u56f3\u9762\u3060\u3063\u3066\uff01\u30c6\u30ad\u30b9\u30c8\u30a8\u30c7\u30a3\u30bf\u30fc\u3067\u601d\u3044\u306e\u307e\u307e\u306b\u4f5c\u308a\u8fbc\u3081\u3066\u3057\u307e\u3044\u307e\u3059\u3002\u3082\u3061\u308d\u3093\u30d7\u30ec\u30fc\u30f3\u30c6\u30ad\u30b9\u30c8\u306a\u306e\u3067\u3001\u7de8\u96c6\u30c4\u30fc\u30eb\u306f\u30c6\u30ad\u30b9\u30c8\u51fa\u529b\u3055\u3048\u51fa\u6765\u308c\u3070\u4f55\u3067\u3082OK\u3002\u96e3\u3057\u3044\u30e9\u30a4\u30d6\u30e9\u30ea\u3084\u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30a4\u30b9\u5229\u7528\u306e\u30ce\u30a6\u30cf\u30a6\u4e0d\u8981\u3067\u3001\u7c21\u5358\u306b\u5e33\u7968\u3084\u30ec\u30dd\u30fc\u30c8\u304c\u4f5c\u308c\u3066\u3057\u307e\u3044\u307e\u3059\u3002\u66f4\u306bLibreOffice\u304c\u3042\u308c\u3070\u3001\u30b3\u30de\u30f3\u30c9\u30e9\u30a4\u30f3\u4e00\u767a\u3067\u4f5c\u3063\u305f\u6587\u66f8\u306ePDF\u5316\u3060\u3063\u3066\u3067\u304d\u3061\u3083\u3044\u307e\u3059\u3002Web\u306e\u30d0\u30c3\u30af\u30a8\u30f3\u30c9\u306b\u4ed5\u8fbc\u3080\u306e\u3060\u3063\u3066\u7c21\u5358\u3067\u3059\u3002\u7d20\u4eba\u306b\u3082\u6271\u3044\u3084\u3059\u3044FlatODF\u3067\u3001\u3044\u308d\u3093\u306a\u6587\u66f8\u3092\u81ea\u52d5\u751f\u6210\u3057\u3061\u3083\u3044\u307e\u3057\u3087\u3046\u3002\n\n### LibreOffice Online\u74b0\u5883\u306e\u69cb\u7bc9\uff0820\u5206\uff09\u5185\u85e4\u4f51\u592a\u6717\n\u6240\u5c5e\uff1a\u30a2\u30a4\u30af\u30e9\u30d5\u30c8\u682a\u5f0f\u4f1a\u793e\u003cbr /\u003e\nLibreOffice Online\u306fWeb\u30d6\u30e9\u30a6\u30b6\u4e0a\u3067LibreOffice\u30d5\u30a1\u30a4\u30eb\u3092\u8868\u793a\u30fb\u7de8\u96c6\u53ef\u80fd\u306a\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3067\u3059\u3002\u672a\u3060\u958b\u767a\u6bb5\u968e\u3067\u306f\u3042\u308a\u307e\u3059\u304c\u3001\u65e5\u672c\u8a9e\u30d5\u30a1\u30a4\u30eb\u306e\u8868\u793a\u3082\u53ef\u80fd\u306a\u305f\u3081\u3001\u3042\u308b\u7a0b\u5ea6\u307e\u3067\u5b9f\u7528\u306b\u8010\u3048\u3046\u308b\u72b6\u6cc1\u306b\u3042\u308a\u307e\u3059\u3002\u4eca\u56de\u306f\u305d\u3093\u306a \nLibreOffice Online\u74b0\u5883\u306e\u69cb\u7bc9\u306b\u3064\u3044\u3066\u304a\u8a71\u3057\u307e\u3059\u3002\n\n# \u61c7\u89aa\u4f1a\n\u8fd1\u304f\u306e\u304a\u5e97\u3067\u61c7\u89aa\u4f1a\u3092\u884c\u3046\u4e88\u5b9a\u3067\u3059\u3002\u53c2\u52a0\u78ba\u8a8d\u306f\u5f53\u65e5\u884c\u3044\u307e\u3059\u3002\u3053\u3061\u3089\u3082\u3054\u53c2\u52a0\u304f\u3060\u3055\u3044\u3002\n\n# \u554f\u3044\u5408\u308f\u305b\u5148\n* kansai-ooo-staff at lists.sourceforge.jp\n* [\u52c9\u5f37\u4f1a\u30b5\u30a4\u30c8](http://kansai-ooo.sourceforge.jp/w/index.php/)"}, {parse: true})
+    });
+    
+    
+  });
+});
+</script>
+
+
+  <script id="CancelTemplate" type="text/html">
+    
+    
+
+<div class="popup">
+  <div class="popup_wrapper">
+    <div class="popup_header">
+      <h2 class="popup_h2">申し込みをキャンセルする</h2>
+      <p class="btn_close"><span class="btn btn_default btn_size_small modal-close"><span class="icon_close">閉じる</span></span></p>
+    </div>
+    <div class="popup_contents">
+      <h3 class="main_h3">コメント</h3>
+      <div id="add_entry_comment" class="add_area">
+        <p class="p note">※全員に公開されます。</p>
+        <p class="text_center"><input class="form_input_big" id="CancelComment" type="text" /></p>
+      </div>
+      <div class="btn_area"><button id="CancelSubmit" class="btn btn_action btn_size_large">キャンセルを確定する</button></div>
+    </div>
+  </div>
+</div>
+
+
+    
+  </script>
+
+
+
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+  {lang: 'ja'}
+</script>
+
+<script type="text/javascript">
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "//platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+  return t;
+}(document, "script", "twitter-wjs"));
+
+twttr.ready(function (twttr) {
+    twttr.events.bind("tweet", function (event) {
+       if (event && typeof cst === "function") {
+         cst('twitter', 'tweet');
+       }
+    });
+});
+</script>
+
+
+</body>
+</html>

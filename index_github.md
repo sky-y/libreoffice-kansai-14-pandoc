@@ -263,6 +263,11 @@ Bashにて確認（コマンドプロンプトも同様のはず）
 
     $ echo "**Hello**" | pandoc -f markdown -t html5 -o hello.pdf
 
+-   `-f`: 入力フォーマット名
+-   `-t`: 出力フォーマット名
+-   `-o`: 出力ファイル名
+-   入力ファイル名が指定されていない場合は、標準入力を使用
+
 ------------------------------------------------------------------------
 
 おまけ: Pandocで作れるスライド
@@ -282,8 +287,10 @@ Bashにて確認（コマンドプロンプトも同様のはず）
 ==================
 
 -   このスライド自体がGitHub Pagesにアップロードされています
--   GitHubリポジトリ:
-    -   Markdown (raw):
+-   [GitHubリポジトリ](https://github.com/sky-y/libreoffice-kansai-14-pandoc)
+    -   [ソース (Pandoc’s Markdown)](https://raw.githubusercontent.com/sky-y/libreoffice-kansai-14-pandoc/master/index.p.md)
+    -   [復習用資料 (GitHub Flavored Markdown)](https://github.com/sky-y/libreoffice-kansai-14-pandoc/blob/master/index_github.md)
+    -   [発表用スライド (HTML/reveal.js)](https://sky-y.github.io/libreoffice-kansai-14-pandoc/)
 
 ------------------------------------------------------------------------
 
@@ -295,26 +302,83 @@ Pandocチュートリアル: LibreOffice Writer文書を中心に
 これからやること
 ================
 
--   LibreOffice Writer
+-   Markdown文書からWriter文書に変換する
+-   Writer文書をMarkdownに変換する
 
 ------------------------------------------------------------------------
 
 pandocコマンド
 ==============
 
-    $ pandoc index.p.md -s -t revealjs -o index.html
+    $ pandoc connpass.md -o connpass.odt
 
--   `-s`: standalone (ヘッダ付きの完全なファイルを出力)
--   `-t`: 出力フォーマット(reveal.js)
 -   `-o`: 出力ファイル名
+    -   多くの場合拡張子で判断できる
 
 ------------------------------------------------------------------------
 
 ファイルを開く
 ==============
 
-    $ open index.html    # Mac/Linux
-    > start index.html   # Windows
+    $ open connpass.odt    # Mac/Linux
+    > start connpass.odt   # Windows
+
+------------------------------------------------------------------------
+
+綺麗なWriter文書を生成する
+==========================
+
+-   Pandocのテンプレート機能を使う
+    -   Pandocコマンドからテンプレート(reference.odt)を生成
+    -   テンプレートをWriterで編集する
+    -   Pandocの変換時にテンプレートをオプションで指定する
+        -   もしくはユーザデータディレクトリ(`~/.pandoc`)に入れる
+
+------------------------------------------------------------------------
+
+(1) Pandocコマンドからテンプレートを生成
+========================================
+
+    $ pandoc --print-default-data-file reference.odt > reference.odt
+
+------------------------------------------------------------------------
+
+(2) テンプレートをWriterで編集する
+==================================
+
+-   reference.odtを開く
+-   内容はPandocから参照されない
+    -   デフォルトで「Hello World!」と表示されている
+    -   例えば表示用サンプルを置いてもいい
+-   「スタイルと書式設定」から書式を変更
+
+<img src="figure/style-and-format.png" style="width:50.0%" />
+
+------------------------------------------------------------------------
+
+(3) Pandocの変換時にテンプレートをオプションで指定する
+======================================================
+
+    $ pandoc connpass.md --reference-doc=reference.odt -o connpass2.odt
+
+-   `--reference-doc`: Writer(やWordなど)のテンプレートを指定 (v2.0)
+    -   注意: 以前は `--reference-odt` というオプションだった
+
+------------------------------------------------------------------------
+
+PandocとWriterの具体的なノウハウ (nogajunさん)
+==============================================
+
+-   [PandocとLibreOffice WriterでiDエディタのマニュアルを製本する, どうしてこうなった - Days of Speed(2014-12-06)](http://www.nofuture.tv/diary/20141206.html)
+
+------------------------------------------------------------------------
+
+画像に関するノウハウ (いくやさん)
+=================================
+
+-   [PandocでMarkdownをODTに変換する - いくやの斬鉄日記](http://blog.goo.ne.jp/ikunya/e/826e6916307159c87afde0fe23c5e1e4)
+    -   画像のサイズを整える (ImageMagickの`mogrify`コマンド)
+    -   画像のDPIを変更する (同上)
 
 ------------------------------------------------------------------------
 

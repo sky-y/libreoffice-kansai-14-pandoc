@@ -348,6 +348,12 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <section id="動作確認-pandoc-wkhtmltopdf-pdf" class="slide level1">
 <h1>動作確認: Pandoc + wkhtmltopdf (PDF)</h1>
 <pre><code>$ echo &quot;**Hello**&quot; | pandoc -f markdown -t html5 -o hello.pdf</code></pre>
+<ul>
+<li><code>-f</code>: 入力フォーマット名</li>
+<li><code>-t</code>: 出力フォーマット名</li>
+<li><code>-o</code>: 出力ファイル名</li>
+<li>入力ファイル名が指定されていない場合は、標準入力を使用</li>
+</ul>
 </section>
 <section id="おまけ-pandocで作れるスライド" class="slide level1">
 <h1>おまけ: Pandocで作れるスライド</h1>
@@ -369,9 +375,11 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <h1>実際のソースコード</h1>
 <ul>
 <li>このスライド自体がGitHub Pagesにアップロードされています</li>
-<li>GitHubリポジトリ:
+<li><a href="https://github.com/sky-y/libreoffice-kansai-14-pandoc">GitHubリポジトリ</a>
 <ul>
-<li>Markdown (raw):</li>
+<li><a href="https://raw.githubusercontent.com/sky-y/libreoffice-kansai-14-pandoc/master/index.p.md">ソース (Pandoc’s Markdown)</a></li>
+<li><a href="https://github.com/sky-y/libreoffice-kansai-14-pandoc/blob/master/index_github.md">復習用資料 (GitHub Flavored Markdown)</a></li>
+<li><a href="https://sky-y.github.io/libreoffice-kansai-14-pandoc/">発表用スライド (HTML/reveal.js)</a></li>
 </ul></li>
 </ul>
 </section>
@@ -381,22 +389,83 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <section id="これからやること" class="slide level1">
 <h1>これからやること</h1>
 <ul>
-<li>LibreOffice Writer</li>
+<li>Markdown文書からWriter文書に変換する</li>
+<li>Writer文書をMarkdownに変換する</li>
 </ul>
 </section>
 <section id="pandocコマンド" class="slide level1">
 <h1>pandocコマンド</h1>
-<pre><code>$ pandoc index.p.md -s -t revealjs -o index.html</code></pre>
+<pre><code>$ pandoc connpass.md -o connpass.odt</code></pre>
 <ul>
-<li><code>-s</code>: standalone (ヘッダ付きの完全なファイルを出力)</li>
-<li><code>-t</code>: 出力フォーマット(reveal.js)</li>
-<li><code>-o</code>: 出力ファイル名</li>
+<li><code>-o</code>: 出力ファイル名
+<ul>
+<li>多くの場合拡張子で判断できる</li>
+</ul></li>
 </ul>
 </section>
 <section id="ファイルを開く" class="slide level1">
 <h1>ファイルを開く</h1>
-<pre><code>$ open index.html    # Mac/Linux
-&gt; start index.html   # Windows</code></pre>
+<pre><code>$ open connpass.odt    # Mac/Linux
+&gt; start connpass.odt   # Windows</code></pre>
+</section>
+<section id="綺麗なwriter文書を生成する" class="slide level1">
+<h1>綺麗なWriter文書を生成する</h1>
+<ul>
+<li>Pandocのテンプレート機能を使う
+<ul>
+<li>Pandocコマンドからテンプレート(reference.odt)を生成</li>
+<li>テンプレートをWriterで編集する</li>
+<li>Pandocの変換時にテンプレートをオプションで指定する
+<ul>
+<li>もしくはユーザデータディレクトリ(<code>~/.pandoc</code>)に入れる</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocコマンドからテンプレートを生成" class="slide level1">
+<h1>(1) Pandocコマンドからテンプレートを生成</h1>
+<pre><code>$ pandoc --print-default-data-file reference.odt &gt; reference.odt</code></pre>
+</section>
+<section id="テンプレートをwriterで編集する" class="slide level1">
+<h1>(2) テンプレートをWriterで編集する</h1>
+<ul>
+<li>reference.odtを開く</li>
+<li>内容はPandocから参照されない
+<ul>
+<li>デフォルトで「Hello World!」と表示されている</li>
+<li>例えば表示用サンプルを置いてもいい</li>
+</ul></li>
+<li>「スタイルと書式設定」から書式を変更</li>
+</ul>
+<figure>
+<img src="figure/style-and-format.png" style="width:50.0%" />
+</figure>
+</section>
+<section id="pandocの変換時にテンプレートをオプションで指定する" class="slide level1">
+<h1>(3) Pandocの変換時にテンプレートをオプションで指定する</h1>
+<pre><code>$ pandoc connpass.md --reference-doc=reference.odt -o connpass2.odt</code></pre>
+<ul>
+<li><code>--reference-doc</code>: Writer(やWordなど)のテンプレートを指定 (v2.0)
+<ul>
+<li>注意: 以前は <code>--reference-odt</code> というオプションだった</li>
+</ul></li>
+</ul>
+</section>
+<section id="pandocとwriterの具体的なノウハウ-nogajunさん" class="slide level1">
+<h1>PandocとWriterの具体的なノウハウ (nogajunさん)</h1>
+<ul>
+<li><a href="http://www.nofuture.tv/diary/20141206.html">PandocとLibreOffice WriterでiDエディタのマニュアルを製本する, どうしてこうなった - Days of Speed(2014-12-06)</a></li>
+</ul>
+</section>
+<section id="画像に関するノウハウ-いくやさん" class="slide level1">
+<h1>画像に関するノウハウ (いくやさん)</h1>
+<ul>
+<li><a href="http://blog.goo.ne.jp/ikunya/e/826e6916307159c87afde0fe23c5e1e4">PandocでMarkdownをODTに変換する - いくやの斬鉄日記</a>
+<ul>
+<li>画像のサイズを整える (ImageMagickの<code>mogrify</code>コマンド)</li>
+<li>画像のDPIを変更する (同上)</li>
+</ul></li>
+</ul>
 </section>
 <section id="書式の自由について" class="slide level1">
 <h1>「書式の自由」について</h1>
