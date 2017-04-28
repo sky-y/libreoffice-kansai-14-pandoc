@@ -24,7 +24,7 @@ OSSの文書変換ツール[Pandoc](https://pandoc.org/)を使うと、Markdown/
 - connpass.* の内容については、[関西LibreOffice勉強会](https://connpass.com/series/395/)にお問い合わせください。
 - 以下はPublic Domainです:
     - reference.odt 
-    - [sample/reference-nogajun.odt](https://github.com/sky-y/libreoffice-kansai-14-pandoc/blob/master/sample/reference-nogajun.odt): [nogajun/pandoc-writer](https://github.com/nogajun/pandoc-writer) の `pandoc-writer.odt` より複製 (Public Domainのもの)
+    - [sample/pandoc-writer.odt](https://github.com/sky-y/libreoffice-kansai-14-pandoc/blob/master/sample/pandoc-writer.odt): [nogajun/pandoc-writer](https://github.com/nogajun/pandoc-writer) の `pandoc-writer.odt` より複製 (Public Domainのもの)
 
 ### 発表用スライド (index.html/index.p.md/index_github.md)
 

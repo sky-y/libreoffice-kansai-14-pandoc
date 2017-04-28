@@ -391,6 +391,10 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <ul>
 <li>Markdown文書からWriter文書に変換する</li>
 <li>Writer文書をMarkdownに変換する</li>
+<li>以下の作業では、<a href="https://github.com/sky-y/libreoffice-kansai-14-pandoc">GitHubリポジトリ</a>のsampleディレクトリにあるファイルを使います
+<ul>
+<li>興味のある人はgit cloneして試してみてください</li>
+</ul></li>
 </ul>
 </section>
 <section id="pandocコマンド" class="slide level1">
@@ -413,11 +417,17 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <ul>
 <li>Pandocのテンプレート機能を使う
 <ul>
+<li><ol type="1">
 <li>Pandocコマンドからテンプレート(reference.odt)を生成</li>
+</ol></li>
+<li><ol start="2" type="1">
 <li>テンプレートをWriterで編集する</li>
-<li>Pandocの変換時にテンプレートをオプションで指定する
+</ol></li>
+<li><ol start="3" type="1">
+<li>Pandocの変換時にテンプレートをオプションで指定する</li>
+</ol>
 <ul>
-<li>もしくはユーザデータディレクトリ(<code>~/.pandoc</code>)に入れる</li>
+<li>もしくはユーザデータディレクトリに入れる</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -454,7 +464,10 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <section id="pandocとwriterの具体的なノウハウ-nogajunさん" class="slide level1">
 <h1>PandocとWriterの具体的なノウハウ (nogajunさん)</h1>
 <ul>
-<li><a href="http://www.nofuture.tv/diary/20141206.html">PandocとLibreOffice WriterでiDエディタのマニュアルを製本する, どうしてこうなった - Days of Speed(2014-12-06)</a></li>
+<li><a href="http://www.nofuture.tv/diary/20141206.html">PandocとLibreOffice WriterでiDエディタのマニュアルを製本する, どうしてこうなった - Days of Speed(2014-12-06)</a>
+<ul>
+<li><a href="https://github.com/nogajun/pandoc-writer">nogajun/pandoc-writer</a>の<code>pandoc-writer.odt</code>がテンプレートとして使える</li>
+</ul></li>
 </ul>
 </section>
 <section id="画像に関するノウハウ-いくやさん" class="slide level1">
@@ -466,6 +479,9 @@ $ echo &quot;**Hello**&quot; | pandoc -f markdown -t html
 <li>画像のDPIを変更する (同上)</li>
 </ul></li>
 </ul>
+</section>
+<section id="writer文書からmarkdownrestlatex文書に変換してみる" class="slide level1">
+<h1>Writer文書からMarkdown/reST/LaTeX文書に変換してみる</h1>
 </section>
 <section id="書式の自由について" class="slide level1">
 <h1>「書式の自由」について</h1>

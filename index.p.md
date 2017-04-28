@@ -297,6 +297,8 @@ $ echo "**Hello**" | pandoc -f markdown -t html5 -o hello.pdf
 
 - Markdown文書からWriter文書に変換する
 - Writer文書をMarkdownに変換する
+- 以下の作業では、[GitHubリポジトリ](https://github.com/sky-y/libreoffice-kansai-14-pandoc)のsampleディレクトリにあるファイルを使います
+    - 興味のある人はgit cloneして試してみてください
 
 ----
 
@@ -323,10 +325,10 @@ $ open connpass.odt    # Mac/Linux
 # 綺麗なWriter文書を生成する
 
 - Pandocのテンプレート機能を使う
-    - Pandocコマンドからテンプレート(reference.odt)を生成
-    - テンプレートをWriterで編集する
-    - Pandocの変換時にテンプレートをオプションで指定する
-        - もしくはユーザデータディレクトリ(`~/.pandoc`)に入れる
+    - (1) Pandocコマンドからテンプレート(reference.odt)を生成
+    - (2) テンプレートをWriterで編集する
+    - (3) Pandocの変換時にテンプレートをオプションで指定する
+        - もしくはユーザデータディレクトリに入れる
 
 ----
 
@@ -364,6 +366,7 @@ $ pandoc connpass.md --reference-doc=reference.odt -o connpass2.odt
 # PandocとWriterの具体的なノウハウ (nogajunさん)
 
 - [PandocとLibreOffice WriterでiDエディタのマニュアルを製本する, どうしてこうなった - Days of Speed(2014-12-06)](http://www.nofuture.tv/diary/20141206.html)
+    - [nogajun/pandoc-writer](https://github.com/nogajun/pandoc-writer)の`pandoc-writer.odt`がテンプレートとして使える
 
 ----
 
@@ -372,6 +375,12 @@ $ pandoc connpass.md --reference-doc=reference.odt -o connpass2.odt
 - [PandocでMarkdownをODTに変換する - いくやの斬鉄日記](http://blog.goo.ne.jp/ikunya/e/826e6916307159c87afde0fe23c5e1e4)
     - 画像のサイズを整える (ImageMagickの`mogrify`コマンド)
     - 画像のDPIを変更する (同上)
+
+----
+
+# Writer文書からMarkdown/reST/LaTeX文書に変換してみる
+
+
 
 ----
 
