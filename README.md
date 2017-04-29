@@ -2,9 +2,9 @@
 
 [第14回関西LibreOffice勉強会 - connpass](https://connpass.com/event/53960/)における藤原の発表資料です。
 
-
-- スライドのMarkdown(Pandoc)ソース: 
-- GitHubリポジトリ全体: 
+- スライド (HTML/reveal.js): https://sky-y.github.io/libreoffice-kansai-14-pandoc/
+- スライド復習用: https://github.com/sky-y/libreoffice-kansai-14-pandoc/blob/master/index_github.md 
+- GitHubリポジトリ全体: https://github.com/sky-y/libreoffice-kansai-14-pandoc
 
 ## 内容
 
